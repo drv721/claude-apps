@@ -2320,9 +2320,16 @@ function renderSwapOptions(options) {
 
 function selectSwapOption(idx) {
   const opt = window._swapOptions[idx];
-  if (!opt || !S.weekPlan) return;
+  if (!opt) return;
 
-  // Update the day's dinner
+  // No plan at all — just open the recipe
+  if (!S.weekPlan) {
+    closeSwapModal();
+    openRecipe(opt.name);
+    return;
+  }
+
+  // Update or add the day's dinner
   const day = S.weekPlan.days.find(d => d.day === swapDay);
   if (day) {
     day.dinner = {
@@ -2332,30 +2339,22 @@ function selectSwapOption(idx) {
       forHer: day.dinner?.forHer || false,
       leftoverNote: opt.tomorrowLunch,
     };
-  } else if (S.weekPlan) {
-    // Day exists in plan but no dinner — add it
-    S.weekPlan.days.push({ day: swapDay, dinner: { name: opt.name, note: opt.desc, time: opt.time, forHer: false }, lunch: { name: 'Leftovers', note: opt.tomorrowLunch, source: 'leftover' }, workout: '', workoutType: '', isOut: false });
   } else {
-    // No plan at all — just show recipe and close
-    closeSwapModal();
-    openRecipe(opt.name);
-    return;
-
-    // Update NEXT day's lunch to reflect the swap
-    const dayOrder = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-    const todayIdx = dayOrder.indexOf(swapDay);
-    const nextDayName = dayOrder[(todayIdx + 1) % 7];
-    const nextDay = S.weekPlan.days.find(d => d.day === nextDayName);
-    if (nextDay && nextDay.lunch?.source === 'leftover') {
-      nextDay.lunch = {
-        name: `${opt.name} leftovers`,
-        note: opt.tomorrowLunch,
-        source: 'leftover',
-      };
-    }
+    S.weekPlan.days.push({ day: swapDay, dinner: { name: opt.name, note: opt.desc, time: opt.time, forHer: false }, lunch: { name: 'Leftovers', note: opt.tomorrowLunch, source: 'leftover' }, workout: '', workoutType: '', isOut: false });
   }
 
+  // Update NEXT day's lunch to reflect the swap
+  const dayOrder = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const nextDayName = dayOrder[(dayOrder.indexOf(swapDay) + 1) % 7];
+  const nextDay = S.weekPlan.days.find(d => d.day === nextDayName);
+  if (nextDay && nextDay.lunch?.source === 'leftover') {
+    nextDay.lunch = {
+      name: `${opt.name} leftovers`,
+      note: opt.tomorrowLunch,
+      source: 'leftover',
+    };
   }
+
   save();
   closeSwapModal();
   renderToday();
