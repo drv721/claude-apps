@@ -12,13 +12,34 @@
 <script>
 (function(){
   try {
-    const c=document.createElement('canvas');c.width=180;c.height=180;
+    const c=document.createElement('canvas');c.width=512;c.height=512;
     const x=c.getContext('2d');
-    x.fillStyle='#002D72';x.fillRect(0,0,180,180);
-    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.fillStyle='#001A4A';x.fill();
-    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.strokeStyle='#FF5910';x.lineWidth=4;x.stroke();
-    x.fillStyle='#FF5910';x.font='bold 56px -apple-system,sans-serif';
-    x.textAlign='center';x.textBaseline='middle';x.fillText('MP',90,92);
+    // Royal blue background with rounded rect feel
+    x.fillStyle='#002D72';
+    x.beginPath();
+    x.roundRect(0,0,512,512,80);
+    x.fill();
+    // Orange arc swoosh across top
+    x.beginPath();
+    x.arc(256,512,340,-Math.PI*1.05,-Math.PI*0.05);
+    x.strokeStyle='#FF5910';
+    x.lineWidth=28;
+    x.stroke();
+    // White MP text — large serif feel
+    x.fillStyle='#ffffff';
+    x.font='bold 200px Georgia,serif';
+    x.textAlign='center';
+    x.textBaseline='middle';
+    x.fillText('MP',256,230);
+    // Tagline
+    x.fillStyle='rgba(255,255,255,0.55)';
+    x.font='500 42px -apple-system,sans-serif';
+    x.fillText('MY PLAN',256,360);
+    // Orange dot accent
+    x.beginPath();
+    x.arc(256,430,10,0,Math.PI*2);
+    x.fillStyle='#FF5910';
+    x.fill();
     const l=document.createElement('link');l.rel='apple-touch-icon';l.href=c.toDataURL();
     document.head.appendChild(l);
   } catch(e){}
@@ -163,7 +184,7 @@ html, body { height: 100%; overflow: hidden; background: #ffffff; color: var(--t
 
 /* ── INPUTS ───────────────────────────────────── */
 .lbl { font-size: 11px; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
-textarea, input[type=text], select, input[type=number] {
+textarea, input[type=text], select, input[type=number], input[type=date] {
   width: 100%; background: #ffffff; border: 1px solid var(--border);
   border-radius: var(--rsm); color: var(--text); font-family: 'DM Sans', sans-serif;
   font-size: 13px; padding: 9px 12px; line-height: 1.5; transition: border-color 0.2s;
@@ -622,15 +643,20 @@ select option { background: #ffffff; color: var(--text); }
     <div class="tb">
       <!-- Log new entry -->
       <div style="padding:16px 16px 0;">
-        <div style="font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:12px;">Log today's weight</div>
-        <div style="display:flex;gap:10px;align-items:flex-end;margin-bottom:8px;">
-          <div style="flex:1;">
-            <label class="lbl">Weight (lbs)</label>
-            <input type="number" id="w-input" placeholder="e.g. 215.4" step="0.1" style="font-size:18px;padding:10px 12px;">
+        <div style="font-family:'DM Serif Display',serif;font-size:16px;margin-bottom:6px;">Log weight</div>
+        <div style="font-size:12px;color:var(--text3);margin-bottom:12px;">Defaults to today — change the date to back-fill entries.</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+          <div>
+            <label class="lbl">Date</label>
+            <input type="date" id="w-date" style="padding:10px 12px;font-size:14px;">
           </div>
-          <button class="btn-p" onclick="logWeight()" style="width:auto;margin:0;padding:11px 20px;flex-shrink:0;">Log it</button>
+          <div>
+            <label class="lbl">Weight (lbs)</label>
+            <input type="number" id="w-input" placeholder="e.g. 215.4" step="0.1" style="font-size:16px;padding:10px 12px;">
+          </div>
         </div>
-        <div id="w-saved" style="display:none;font-size:13px;color:var(--green);padding:4px 0;">Saved ✓</div>
+        <button class="btn-p" onclick="logWeight()" style="margin-top:0;">Log it</button>
+        <div id="w-saved" style="display:none;font-size:13px;color:var(--green);padding:6px 0;">Saved ✓</div>
       </div>
 
       <!-- Stats row -->
@@ -690,6 +716,23 @@ select option { background: #ffffff; color: var(--text); }
       </div>
     </div>
     <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="habit-cards">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</div>
+
+<!-- SWAP MODAL -->
+<div class="modal-bg" id="swap-bg" onclick="closeSwapModal(event)">
+  <div class="modal" style="border-radius:20px 20px 0 0;">
+    <div class="modal-handle"></div>
+    <div style="flex-shrink:0;padding:14px 16px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:var(--text);">Swap dinner</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;" id="swap-day-label"></div>
+      </div>
+      <button onclick="closeSwapModal()" style="background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;padding:0 4px;">✕</button>
+    </div>
+    <div style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;" id="swap-body">
       <!-- rendered by JS -->
     </div>
   </div>
@@ -1018,7 +1061,10 @@ function renderToday() {
         </div>
         <div>
           <div class="msl-lbl">Dinner</div>
-          <div class="msl-n ${hasRec?'link':''}" ${hasRec?`onclick="openRecipe('${td.dinner.name}')" style="cursor:pointer;"`:''}>${td.dinner?.name||'—'}${hasRec?' ▸':''}</div>
+          <div style="display:flex;align-items:flex-start;gap:6px;">
+            <div class="msl-n ${hasRec?'link':''}" ${hasRec?`onclick="openRecipe('${td.dinner.name}')" style="cursor:pointer;flex:1;"`:'style="flex:1;"'}>${td.dinner?.name||'—'}${hasRec?' ▸':''}</div>
+            <button onclick="openSwap('${dayName}')" style="flex-shrink:0;padding:3px 8px;font-size:10px;background:var(--amber-d);color:var(--amber);border:1px solid rgba(255,89,16,0.3);border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;">swap ↺</button>
+          </div>
           <div class="msl-note">${td.dinner?.note||''}</div>
           ${td.dinner?.forHer ? '<span class="mf mf-h">portion for her</span>' : ''}
           ${td.dinner?.time ? `<span class="mf mf-p">${td.dinner.time}</span>` : ''}
@@ -1275,7 +1321,10 @@ function renderWeekPlan(outNights, herNights) {
       </div>
       <div>
         <div class="msl-lbl">Dinner</div>
-        <div class="msl-n">${d.dinner?.name||'—'}</div>
+        <div style="display:flex;align-items:flex-start;gap:6px;">
+          <div class="msl-n" style="flex:1;">${d.dinner?.name||'—'}</div>
+          <button onclick="event.stopPropagation();openSwap('${d.day}')" style="flex-shrink:0;padding:3px 8px;font-size:10px;background:var(--amber-d);color:var(--amber);border:1px solid rgba(255,89,16,0.3);border-radius:10px;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;">swap ↺</button>
+        </div>
         <div class="msl-note">${d.dinner?.note||''}</div>
         ${d.dinner?.time?`<span class="mf mf-p">${d.dinner.time}</span>`:''}
         ${d.dinner?.forHer||herTonight?'<span class="mf mf-h">portion for her</span>':''}
@@ -1819,14 +1868,17 @@ function logWeight() {
     alert('Please enter a valid weight in lbs.');
     return;
   }
-  const today = new Date().toISOString().split('T')[0];
-  // Remove existing entry for today if any
-  S.weights = S.weights.filter(w => w.date !== today);
-  S.weights.unshift({date: today, lbs: val});
+  const dateInput = document.getElementById('w-date').value;
+  const date = dateInput || new Date().toISOString().split('T')[0];
+  // Remove existing entry for this date if any (overwrite)
+  S.weights = S.weights.filter(w => w.date !== date);
+  S.weights.push({date, lbs: val});
   S.weights.sort((a,b) => new Date(b.date) - new Date(a.date));
-  if (S.weights.length > 52) S.weights = S.weights.slice(0, 52); // 1 year max
+  if (S.weights.length > 52) S.weights = S.weights.slice(0, 52);
   save();
   document.getElementById('w-input').value = '';
+  // Reset date to today after logging
+  document.getElementById('w-date').value = new Date().toISOString().split('T')[0];
   const msg = document.getElementById('w-saved');
   msg.style.display = 'block';
   setTimeout(() => msg.style.display = 'none', 2000);
@@ -1834,6 +1886,9 @@ function logWeight() {
 }
 
 function renderWeight() {
+  // Set date input default to today
+  const dateEl = document.getElementById('w-date');
+  if (dateEl && !dateEl.value) dateEl.value = new Date().toISOString().split('T')[0];
   const weights = S.weights;
   const statsEl = document.getElementById('w-stats');
   const histEl = document.getElementById('w-history');
@@ -2099,6 +2154,187 @@ function shouldShowHabits() {
   // Show if: not all done AND not manually dismissed today
   resetHabitsIfNewDay();
   return !allHabitsDone() && !S.habits.dismissed;
+}
+
+// ═══════ MEAL SWAP ═══════════════════════════════
+let swapDay = null;
+
+function openSwap(day) {
+  swapDay = day;
+  const dayNames = {Mon:'Monday',Tue:'Tuesday',Wed:'Wednesday',Thu:'Thursday',Fri:'Friday',Sat:'Saturday',Sun:'Sunday'};
+  document.getElementById('swap-day-label').textContent = `${dayNames[day] || day}'s dinner`;
+  document.getElementById('swap-body').innerHTML = renderSwapStep1();
+  document.getElementById('swap-bg').classList.add('open');
+}
+
+function closeSwapModal(e) {
+  if (!e || e.target === document.getElementById('swap-bg')) {
+    document.getElementById('swap-bg').classList.remove('open');
+  }
+}
+
+function renderSwapStep1() {
+  return `<div style="padding:16px;">
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.5;">Tell me what you're feeling and how much you want to cook — I'll suggest 3 options from what you have.</div>
+
+    <div class="ig">
+      <label class="lbl">What are you feeling?</label>
+      <textarea id="swap-craving" placeholder="e.g. something with shrimp, a burger, no idea just surprise me..." style="min-height:60px;"></textarea>
+      <div class="chips" style="margin-top:6px;">
+        <div class="chip" onclick="chip(this,'swap-craving','surprise me')">surprise me</div>
+        <div class="chip" onclick="chip(this,'swap-craving','something with shrimp')">shrimp</div>
+        <div class="chip" onclick="chip(this,'swap-craving','chicken')">chicken</div>
+        <div class="chip" onclick="chip(this,'swap-craving','pasta')">pasta</div>
+        <div class="chip" onclick="chip(this,'swap-craving','something light')">light</div>
+        <div class="chip" onclick="chip(this,'swap-craving','rice dish')">rice dish</div>
+        <div class="chip" onclick="chip(this,'swap-craving','a burger')">burger</div>
+        <div class="chip" onclick="chip(this,'swap-craving','Puerto Rican')">PR</div>
+        <div class="chip" onclick="chip(this,'swap-craving','fish')">fish</div>
+        <div class="chip" onclick="chip(this,'swap-craving','eggs')">eggs</div>
+      </div>
+    </div>
+
+    <div class="ig">
+      <label class="lbl">How much do you want to cook tonight?</label>
+      <div class="tags" id="swap-time-tags">
+        <div class="tag" onclick="selSwapTime(this)" data-t="under 15 min — bare minimum">Under 15 min</div>
+        <div class="tag on" onclick="selSwapTime(this)" data-t="20–30 min">20–30 min</div>
+        <div class="tag" onclick="selSwapTime(this)" data-t="45 min, mostly hands-off is fine">45 min hands-off</div>
+        <div class="tag" onclick="selSwapTime(this)" data-t="up to an hour, I'm in the mood to cook">Full cook, I'm down</div>
+      </div>
+    </div>
+
+    <button class="btn-p" onclick="genSwapOptions()">Find me 3 options →</button>
+  </div>`;
+}
+
+function selSwapTime(el) {
+  document.querySelectorAll('#swap-time-tags .tag').forEach(t => t.classList.remove('on'));
+  el.classList.add('on');
+}
+
+async function genSwapOptions() {
+  const craving = document.getElementById('swap-craving')?.value.trim() || 'surprise me';
+  const timeSel = document.querySelector('#swap-time-tags .tag.on');
+  const cookTime = timeSel ? timeSel.dataset.t : '20–30 min';
+
+  // Current plan context
+  const dayPlan = S.weekPlan?.days?.find(d => d.day === swapDay);
+  const currentDinner = dayPlan?.dinner?.name || 'nothing planned';
+  const workoutType = dayPlan?.workoutType || 'unknown';
+
+  // Live inventory
+  const fridgeItems = S.inv.filter(i=>i.loc==='fridge'&&i.s!=='out').map(i=>`${i.n} (${i.q})`);
+  const counterItems = S.inv.filter(i=>i.loc==='counter'&&i.s!=='out').map(i=>`${i.n} (${i.q})`);
+  const freezerItems = S.inv.filter(i=>i.loc==='freezer'&&i.s!=='out').map(i=>`${i.n} (${i.q})`);
+  const lowItems = S.inv.filter(i=>i.s==='low'||i.s==='out').map(i=>i.n);
+
+  document.getElementById('swap-body').innerHTML = `<div class="spin-wrap"><div class="spin"></div><div class="spin-txt">Finding your 3 options...<br>Checking inventory</div></div>`;
+
+  const prompt = `Personal chef for a Puerto Rican man in Chicago. He wants to swap his planned dinner (${currentDinner}) for something else tonight.
+
+CRAVING: ${craving}
+COOK TIME AVAILABLE: ${cookTime}
+TONIGHT'S WORKOUT TYPE: ${workoutType} (strength days need higher protein)
+
+LIVE INVENTORY — prioritize fridge/counter first:
+FRIDGE: ${fridgeItems.join(', ')||'check standard'}
+COUNTER: ${counterItems.join(', ')||'check standard'}
+FREEZER: ${freezerItems.join(', ')||'check standard'}
+DO NOT USE (low/out): ${lowItems.join(', ')||'none'}
+PANTRY ALWAYS AVAILABLE: sofrito, sazón, adobo, gandules, kidney beans, olives, all pastas, jarred sauces, KFI butter chicken, full spice drawer, EVOO, garlic, onions
+
+RULES: No frying. No mushrooms. No quinoa. Makes 3–4 portions. Air fryer/oven/pan sear/dutch oven only.
+
+Generate exactly 3 dinner options. Make them genuinely different from each other. Each must fit the cook time constraint strictly.
+
+Return ONLY valid JSON:
+{"options":[{"name":"dish name","cuisine":"pr|italian|world|simple","time":"20 min active","method":"pan sear","protein":"chicken thighs","desc":"2 sentences: what it is and why it works tonight","cookNote":"single most important tip","tomorrowLunch":"what to do with leftovers for lunch tomorrow"}]}`;
+
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,messages:[{role:'user',content:prompt}]})});
+    const data = await res.json();
+    const raw = data.content.map(c=>c.text||'').join('');
+    const parsed = JSON.parse(raw.replace(/```json|```/g,'').trim());
+    renderSwapOptions(parsed.options);
+  } catch(e) {
+    document.getElementById('swap-body').innerHTML = `<div style="padding:16px;"><div class="err">Couldn't load options. Check connection.</div><button class="btn-s" onclick="document.getElementById('swap-body').innerHTML=renderSwapStep1()" style="margin-top:10px;">← Back</button></div>`;
+  }
+}
+
+function renderSwapOptions(options) {
+  const cLbl = {pr:'Puerto Rican',italian:'Italian',world:'World',simple:'Simple'};
+  const cCls = {pr:'b-pr',italian:'b-it',world:'b-wl',simple:'b-sm'};
+  let html = `<div style="padding:14px 16px 0;">
+    <div style="font-size:12px;color:var(--text2);margin-bottom:12px;line-height:1.5;">Pick one to swap in. Tomorrow's lunch will update automatically.</div>`;
+  options.forEach((o,i) => {
+    html += `<div class="meal-opt" id="swo-${i}" onclick="selectSwapOption(${i})" style="margin-bottom:10px;">
+      <div class="meal-name">${o.name}</div>
+      <div class="meal-tags">
+        <span class="badge ${cCls[o.cuisine]||'b-sm'}">${cLbl[o.cuisine]||o.cuisine}</span>
+        <span class="badge b-sm">${o.method}</span>
+        <span class="badge b-sm">${o.time}</span>
+      </div>
+      <div class="meal-desc">${o.desc}</div>
+      <div class="meal-tip">Tip: ${o.cookNote}</div>
+      <div style="margin-top:5px;font-size:11px;color:var(--text3);">Tomorrow's lunch: ${o.tomorrowLunch}</div>
+    </div>`;
+  });
+  html += `<button class="btn-s" onclick="document.getElementById('swap-body').innerHTML=renderSwapStep1()" style="margin-bottom:16px;">← Back</button></div>`;
+  document.getElementById('swap-body').innerHTML = html;
+  // Store options for selection
+  window._swapOptions = options;
+}
+
+function selectSwapOption(idx) {
+  const opt = window._swapOptions[idx];
+  if (!opt || !S.weekPlan) return;
+
+  // Update the day's dinner
+  const day = S.weekPlan.days.find(d => d.day === swapDay);
+  if (day) {
+    day.dinner = {
+      name: opt.name,
+      note: opt.desc,
+      time: opt.time,
+      forHer: day.dinner?.forHer || false,
+      leftoverNote: opt.tomorrowLunch,
+    };
+
+    // Update NEXT day's lunch to reflect the swap
+    const dayOrder = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    const todayIdx = dayOrder.indexOf(swapDay);
+    const nextDayName = dayOrder[(todayIdx + 1) % 7];
+    const nextDay = S.weekPlan.days.find(d => d.day === nextDayName);
+    if (nextDay && nextDay.lunch?.source === 'leftover') {
+      nextDay.lunch = {
+        name: `${opt.name} leftovers`,
+        note: opt.tomorrowLunch,
+        source: 'leftover',
+      };
+    }
+  }
+
+  save();
+  closeSwapModal();
+  renderToday();
+
+  // Re-render week plan if it's visible
+  if (S.weekPlan) {
+    const ps3 = document.getElementById('ps3-content');
+    if (ps3 && ps3.innerHTML.length > 100) {
+      renderWeekPlan(S.weekPlan.outNights || [], S.weekPlan.herNights || []);
+    }
+  }
+
+  // Show confirmation
+  setTimeout(() => {
+    const saved = document.createElement('div');
+    saved.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#002D72;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;z-index:400;box-shadow:0 4px 16px rgba(0,0,0,0.2);';
+    saved.textContent = `Swapped to ${opt.name} ✓`;
+    document.body.appendChild(saved);
+    setTimeout(() => saved.remove(), 2500);
+  }, 100);
 }
 
 // ═══════ INIT ════════════════════════════════════
