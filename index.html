@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Vega — AI Mastery Curriculum</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #f4f6fb;
+    --surface2: #eaeff8;
+    --border: #d0d9ec;
+    --border2: #b0bedd;
+    --text: #002D72;
+    --text2: #3a5a9a;
+    --text3: #7a96c2;
+    --accent: #FF5910;
+    --accent-dim: rgba(255,89,16,0.09);
+    --accent-border: rgba(255,89,16,0.35);
+    --gold: #FF5910;
+    --gold-dim: rgba(255,89,16,0.08);
+    --blue: #002D72;
+    --blue-dim: rgba(0,45,114,0.07);
+    --coral: #FF5910;
+    --coral-dim: rgba(255,89,16,0.08);
+    --amber: #FF5910;
+    --amber-dim: rgba(255,89,16,0.08);
+    --purple: #002D72;
+    --purple-dim: rgba(0,45,114,0.07);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,45,114,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,45,114,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 24px 120px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Header */
+  .header { margin-bottom: 52px; }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FF5910;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: #FF5910;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--text2);
+    max-width: 540px;
+    line-height: 1.7;
+  }
+
+  /* Progress bar */
+  .progress-wrap {
+    margin: 36px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .progress-stats {
+    display: flex;
+    gap: 24px;
+    flex-shrink: 0;
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: #FF5910;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .bar-wrap { flex: 1; }
+
+  .bar-track {
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #FF5910, #002D72);
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bar-pct {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 6px;
+    text-align: right;
+  }
+
+  /* Event callout */
+  .callout {
+    background: rgba(255,89,16,0.07);
+    border: 1px solid rgba(255,89,16,0.25);
+    border-radius: 10px;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #002D72;
+    margin-bottom: 36px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .callout-icon { font-size: 18px; }
+
+  /* Phase */
+  .phase {
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .phase:hover { border-color: var(--border2); }
+
+  .phase-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    cursor: pointer;
+    background: var(--surface);
+    transition: background 0.15s;
+    user-select: none;
+  }
+
+  .phase-header:hover { background: var(--surface2); }
+
+  .phase-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .phase-title-wrap { flex: 1; }
+
+  .phase-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 2px;
+  }
+
+  .phase-meta {
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .phase-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .phase-progress {
+    font-size: 12px;
+    color: var(--text3);
+    white-space: nowrap;
+    min-width: 40px;
+    text-align: right;
+  }
+
+  .chevron {
+    color: var(--text3);
+    font-size: 12px;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  .phase.open .chevron { transform: rotate(90deg); }
+
+  .phase-body {
+    display: none;
+    border-top: 1px solid var(--border);
+  }
+
+  .phase.open .phase-body { display: block; }
+
+  .phase-note {
+    padding: 14px 20px 0;
+    font-size: 13px;
+    color: var(--text3);
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  /* Course rows */
+  .course {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+
+  .course:last-child { border-bottom: none; }
+  .course:hover { background: rgba(0,45,114,0.025); }
+
+  .check {
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid var(--border2);
+    flex-shrink: 0;
+    margin-top: 1px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    background: transparent;
+  }
+
+  .check:hover { border-color: #FF5910; background: rgba(255,89,16,0.08); }
+
+  .check.done {
+    background: #FF5910;
+    border-color: #FF5910;
+  }
+
+  .check.done::after {
+    content: '✓';
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .course-info { flex: 1; min-width: 0; }
+
+  .course-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.4;
+    margin-bottom: 5px;
+  }
+
+  .course-name a {
+    color: #002D72;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+
+  .course-name a:hover { color: #FF5910; }
+
+  .course-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 5px;
+  }
+
+  .tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--border); color: var(--text3); white-space: nowrap; }
+  .tag.free { color: #002D72; border-color: rgba(0,45,114,0.3); background: rgba(0,45,114,0.07); }
+  .tag.low { color: #FF5910; border-color: rgba(255,89,16,0.3); background: rgba(255,89,16,0.08); }
+  .tag.cert { color: #002D72; border-color: rgba(0,45,114,0.3); background: rgba(0,45,114,0.07); font-weight: 500; }
+  .tag.project { color: #FF5910; border-color: rgba(255,89,16,0.3); background: rgba(255,89,16,0.08); font-weight: 500; }
+  .tag.event { color: #FF5910; border-color: rgba(255,89,16,0.35); background: rgba(255,89,16,0.1); font-weight: 500; }
+  .tag.prestige { color: #7c3aed; border-color: rgba(124,58,237,0.3); background: rgba(124,58,237,0.07); font-weight: 500; }
+  .tag.salesforce { color: #00a173; border-color: rgba(0,161,115,0.3); background: rgba(0,161,115,0.08); }
+
+  .course-why {
+    font-size: 12px;
+    color: var(--text3);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  /* Reset */
+  .reset-btn {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--text3);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-top: 32px;
+  }
+
+  .reset-btn:hover { border-color: var(--border2); color: var(--text2); }
+
+  /* Footer */
+  .footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: gap;
+    gap: 12px;
+  }
+
+  /* Phase color themes */
+  .p1 .phase-num { background: rgba(255,89,16,0.1); color: #FF5910; }
+  .p2 .phase-num { background: rgba(124,58,237,0.1); color: #7c3aed; }
+  .p3 .phase-num { background: rgba(0,45,114,0.08); color: #002D72; }
+  .p3b .phase-num { background: rgba(0,161,115,0.12); color: #00a173; }
+  .p4 .phase-num { background: rgba(255,89,16,0.1); color: #FF5910; }
+  .p5 .phase-num { background: rgba(0,45,114,0.08); color: #002D72; }
+  .p6 .phase-num { background: rgba(255,89,16,0.1); color: #FF5910; }
+  .p7 .phase-num { background: rgba(0,45,114,0.08); color: #002D72; }
+
+  .badge-p1 { background: rgba(255,89,16,0.1); color: #FF5910; border: 1px solid rgba(255,89,16,0.3); }
+  .badge-p2 { background: rgba(124,58,237,0.1); color: #7c3aed; border: 1px solid rgba(124,58,237,0.3); }
+  .badge-p3 { background: rgba(0,45,114,0.08); color: #002D72; border: 1px solid rgba(0,45,114,0.25); }
+  .badge-p3b { background: rgba(0,161,115,0.1); color: #00a173; border: 1px solid rgba(0,161,115,0.3); }
+  .badge-p4 { background: rgba(255,89,16,0.1); color: #FF5910; border: 1px solid rgba(255,89,16,0.3); }
+  .badge-p5 { background: rgba(0,45,114,0.08); color: #002D72; border: 1px solid rgba(0,45,114,0.25); }
+  .badge-p6 { background: rgba(255,89,16,0.1); color: #FF5910; border: 1px solid rgba(255,89,16,0.3); }
+  .badge-p7 { background: rgba(0,45,114,0.08); color: #002D72; border: 1px solid rgba(0,45,114,0.25); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="header">
+    <div class="eyebrow">AI Mastery Curriculum · 2026</div>
+    <h1>Daniel Vega<br><em>From ChatGPT dabbler<br>to AI-powered marketer.</em></h1>
+    <p class="subtitle">A personalized, self-paced learning track built around your 15+ years in integrated marketing, sponsorships & cause marketing — accelerated by Claude and vibe coding.</p>
+  </div>
+
+  <div class="progress-wrap">
+    <div class="progress-stats">
+      <div class="stat-item">
+        <div class="stat-num" id="done-num">0</div>
+        <div class="stat-label">Completed</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="total-num">0</div>
+        <div class="stat-label">Total Items</div>
+      </div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-track"><div class="bar-fill" id="bar"></div></div>
+      <div class="bar-pct" id="pct">0% complete</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <span class="callout-icon">📅</span>
+    <span><strong>March 28 — Vibe Coding App Build Day</strong> at your social club. You'll hit Phase 3 in real-time. Go build something marketing-related on the spot.</span>
+  </div>
+
+  <div id="phases"></div>
+
+  <button class="reset-btn" onclick="resetAll()">↺ Reset all progress</button>
+
+  <div class="footer">
+    <span>Built with Claude · Daniel Vega AI Curriculum 2026</span>
+    <span id="last-saved"></span>
+  </div>
+
+</div>
+
+<script>
+const data = [
+  {
+    id: 'p1',
+    cls: 'p1',
+    badge: '01 · Start today',
+    badgeCls: 'badge-p1',
+    num: '01',
+    name: 'Claude & AI Foundations',
+    meta: 'Week 1 · ~5 hrs · The vocabulary everything else is built on',
+    note: 'Iron Man 1. Before you can do anything, you need to understand how Claude actually thinks — not just what to type. Your ChatGPT experience transfers, but Claude has a different grammar. This week gives you the language.',
+    open: true,
+    courses: [
+      { name: "Anthropic's Interactive Prompt Engineering Tutorial", url: 'https://github.com/anthropics/prompt-eng-interactive-tutorial', tags: ['free','~3 hrs'], why: 'Official Anthropic course — 9 chapters teaching exactly how Claude thinks. Start here, day one.' },
+      { name: 'Anthropic Prompt Engineering Docs', url: 'https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview', tags: ['free','1 hr'], why: 'The actual playbook Anthropic uses internally. Bookmark it — you\'ll reference it for the rest of the curriculum.' },
+      { name: 'Learn Prompting: Intro to Prompt Engineering', url: 'https://learnprompting.org/courses/intro-to-prompt-engineering', tags: ['free','2 hrs'], why: 'Covers zero-shot, few-shot, chain-of-thought — the core techniques behind every good prompt you\'ll ever write.' },
+      { name: 'LinkedIn Learning: Intro to Prompt Engineering for Generative AI', url: 'https://www.linkedin.com/learning/introduction-to-prompt-engineering-for-generative-ai', tags: ['free (Premium)','1 hr','cert'], why: 'You have Premium — quick cert that lands on your LinkedIn profile immediately. Fast win.' },
+      { name: 'Anthropic Academy: AI Fluency Certificate', url: 'https://anthropic.skilljar.com', tags: ['free','2 hrs','cert'], why: 'Official Anthropic cert. The Constitutional AI angle is a strong talking point for cause marketing and social impact roles.' },
+    ]
+  },
+  {
+    id: 'p2',
+    cls: 'p2',
+    badge: '02 · Start week 1',
+    badgeCls: 'badge-p2',
+    num: '02',
+    name: '⭐ Prestige Certs — Start Now, Not Later',
+    meta: 'Week 1 onward · All free to audit · No prereqs — begin immediately in parallel',
+    note: 'The Avengers assembling. These are the brand names recruiters stop scrolling for — Harvard, Wharton, Google, Meta, IBM, Andrew Ng. Zero technical prerequisite. You don\'t need to finish Phase 1 first. Start Harvard CS50 AI and Andrew Ng this week. The longer these sit on your LinkedIn, the better.',
+    open: false,
+    courses: [
+      { name: 'Harvard: CS50\'s Intro to AI with Python', url: 'https://cs50.harvard.edu/ai/', tags: ['free cert','7 weeks','prestige'], why: 'The highest-ROI item on this entire list. "Harvard AI Certificate" on your resume, zero cost. 2.4M enrollments, updated every year. Start this week — it\'s self-paced.' },
+      { name: 'Andrew Ng / DeepLearning.AI: AI For Everyone', url: 'https://www.coursera.org/learn/ai-for-everyone', tags: ['free (audit)','6 hrs','prestige'], why: 'Andrew Ng is the most recognized AI educator alive. Non-technical, business-focused, designed for leaders. Do it in a weekend. Cert is ~$49 if you want it.' },
+      { name: 'Google: AI Essentials — Coursera', url: 'https://www.coursera.org/learn/google-ai-essentials', tags: ['~$49','8 hrs','prestige'], why: 'Google-badged credential on LinkedIn — $49 and recognizable to every recruiter in tech and marketing.' },
+      { name: 'Wharton (UPenn): AI For Business Specialization', url: 'https://www.coursera.org/specializations/ai-for-business-wharton', tags: ['free (audit)','prestige'], why: '#1 business school globally. Free to audit. Cert is ~$200 if you want it. Covers AI strategy, marketing personalization — directly maps to your partnerships background.' },
+      { name: 'IBM: AI Foundations for Business — edX', url: 'https://www.edx.org/learn/artificial-intelligence/ibm-ai-foundations-for-business', tags: ['free (audit)','prestige'], why: 'IBM brand = enterprise credibility. Free to audit. Strong talking point for corporate partnership and sponsor-facing roles.' },
+      { name: 'Meta: Social Media Marketing Professional Certificate', url: 'https://www.coursera.org/professional-certificates/facebook-social-media-marketing', tags: ['free (audit)','prestige'], why: 'Meta-issued. Covers Facebook, Instagram, ads, analytics. Free to audit — closes your social gap with the most recognized name in the space.' },
+    ]
+  },
+  {
+    id: 'p3',
+    cls: 'p3',
+    badge: '03 · Weeks 1–4',
+    badgeCls: 'badge-p3',
+    num: '03',
+    name: 'Digital Marketing & Social Foundations',
+    meta: 'Weeks 1–4 · ~18 hrs · Run parallel to Phases 1 & 2',
+    note: 'Captain America getting his training montage. You\'ve led $3M+ integrated campaigns but digital/social execution was always delegated. These certs make you fluent — not an expert overnight, but confident enough to lead it, speak to it in interviews, and stop deferring to junior staff.',
+    open: false,
+    courses: [
+      { name: 'Google Digital Garage: Fundamentals of Digital Marketing', url: 'https://learndigital.withgoogle.com/digitalgarage/course/digital-marketing', tags: ['free','~40 hrs','cert'], why: 'IAB-accredited, 26 modules covering SEO, analytics, social, email, and ads. The single most recognized free digital marketing cert available. Goes directly to LinkedIn.' },
+      { name: 'HubSpot Academy: Social Media Marketing Certification', url: 'https://academy.hubspot.com/courses/social-media', tags: ['free','4 hrs','cert'], why: 'Free, widely recognized, covers strategy, content calendars, analytics, and engagement. Hiring managers know this cert. Knock it out in a day.' },
+      { name: 'Meta Blueprint: Digital Marketing Essentials', url: 'https://www.facebook.com/business/learn', tags: ['free','self-paced'], why: 'Facebook/Instagram ad platform straight from the source. 90+ free modules. You\'ve run Meta-facing sponsorship campaigns — now understand the actual ad backend.' },
+      { name: 'Google Skillshop: Google Analytics 4 Certification', url: 'https://skillshop.withgoogle.com', tags: ['free','5 hrs','cert'], why: 'GA4 is the universal standard for measuring digital performance. Knowing it = instant credibility in any marketing interview.' },
+      { name: 'LinkedIn Marketing Labs: Marketing Fundamentals', url: 'https://linkedin.com/business/marketing/blog/linkedin-ads/linkedin-marketing-labs', tags: ['free','2 hrs','cert'], why: 'LinkedIn is your #1 channel for partnerships and B2B outreach. Understand the platform you\'re already living on.' },
+      { name: 'Coursera: Prompt Engineering for Marketing & Advertising', url: 'https://www.coursera.org/projects/prompt-engineering-generative-ai-for-marketing-advertising', tags: ['free (audit)','2 hrs'], why: 'The bridge — connects your Phase 1 AI skills directly to marketing execution. Do this after the first two phases click.' },
+    ]
+  },
+  {
+    id: 'p3b',
+    cls: 'p3b',
+    badge: '04 · Weeks 3–6',
+    badgeCls: 'badge-p3b',
+    num: '04',
+    name: 'Salesforce & Tech Company Targeting',
+    meta: 'Weeks 3–6 · ~8 hrs · The key that unlocks Chicago tech + Salesforce\'s front door',
+    note: 'Salesforce has a massive Chicago office and they are actively hiring — but their ATS filters for Trailhead credentials before a human ever sees your resume. This phase also covers what Google, Meta, AI startups, and enterprise tech actually screen for in marketing and partnerships roles, which is meaningfully different from traditional marketing orgs.',
+    open: false,
+    courses: [
+      { name: 'Salesforce Trailhead: Salesforce Associate Credential', url: 'https://trailhead.salesforce.com/en/credentials/associate', tags: ['free to learn','~$75 exam','cert'], why: 'The front door to Salesforce. Free to study on Trailhead, $75 exam fee. Shows up as a verified Salesforce credential — their Chicago recruiters filter for this before reading anything else.' },
+      { name: 'Salesforce Trailhead: Marketing Cloud Email Specialist Trail', url: 'https://trailhead.salesforce.com/en/content/learn/trails/marketing-cloud-email-specialist', tags: ['free','self-paced'], why: 'Marketing Cloud is Salesforce\'s email + automation platform used by enterprise marketing teams. You already have it on your resume as a tool — learn it deeply enough to demo it.' },
+      { name: 'Salesforce Trailhead: Agentblazer — AI Agent Skills', url: 'https://trailhead.salesforce.com/agentblazer', tags: ['free','new 2026'], why: 'Salesforce just retired their AI Associate cert and replaced it with Agentblazer in 2026. This is their new AI credentialing program — getting in early signals you\'re ahead of the curve.' },
+      { name: 'Salesforce Trailhead: CRM for Business (Superbadge)', url: 'https://trailhead.salesforce.com/en/content/learn/superbadges', tags: ['free','cert'], why: 'Superbadges are Salesforce\'s hands-on credentials — more credible than modules because they require you to actually build things. Stack 2-3 and they show on your Trailhead profile.' },
+      { name: '🎯 INTEL: What Google & Meta Look for in Marketing/Partnerships Roles', url: null, tags: ['reference'], why: 'Key signals these orgs screen for: (1) Data-driven decision making with named tools — GA4, Tableau, Looker. (2) Cross-functional program leadership at scale — you have this. (3) Measurable impact framed as revenue/growth, not activity. (4) AI tool fluency — Claude, HubSpot AI, Canva AI. (5) CRM/martech stack experience — Salesforce, HubSpot, Marketo. (6) Partner/ecosystem experience at Fortune 500 level — you have this too.' },
+      { name: '🎯 INTEL: What AI Startups & Tech Companies Look for', url: null, tags: ['reference'], why: 'Startups want: (1) Speed — can you move fast and build things? Vibe coding portfolio proves this. (2) Scrappiness — Welcome.US and T-Mobile\'s cause marketing show you can do more with less. (3) AI fluency — not just tool names but demonstrated output. (4) GTM experience — your sponsorship and activation work maps directly to startup go-to-market. (5) Cross-functional leadership — you managed 50+ stakeholders, which is rare at startup scale.' },
+      { name: 'HubSpot Academy: Marketing Hub Software Certification', url: 'https://academy.hubspot.com/courses/hubspot-marketing-software', tags: ['free','4 hrs','cert'], why: 'HubSpot is the dominant martech platform at mid-market and startup orgs. A free cert that proves CRM + marketing automation fluency — exactly what tech hiring managers screen for.' },
+    ]
+  },
+  {
+    id: 'p4',
+    cls: 'p4',
+    badge: '05 · Weeks 3–8',
+    badgeCls: 'badge-p4',
+    num: '05',
+    name: 'AI-Powered Marketing Tools & Projects',
+    meta: 'Weeks 3–8 · ~12 hrs + projects · Where your 15 years becomes a superpower',
+    note: 'Tony Stark building the suit. You\'re not learning marketing — you already know marketing. You\'re building AI tools that do marketing at scale. Your T-Mobile and Welcome.US experience are the raw material. Claude is the shop.',
+    open: false,
+    courses: [
+      { name: 'LinkedIn Learning: Claude Code for Non-Programmers', url: 'https://www.linkedin.com/learning/claude-code-for-non-programmers-automating-daily-tasks', tags: ['free (Premium)','37 min'], why: 'Teaches workflow automation without a single line of code. Directly applicable to campaign ops, reporting, and partner management.' },
+      { name: 'LinkedIn Learning: Everyday Productivity with Claude Cowork', url: 'https://www.linkedin.com/learning/everyday-productivity-with-claude-cowork', tags: ['free (Premium)','23 min'], why: 'Claude Cowork automates desktop tasks. Knowing this specific tool is a concrete differentiator when interviewers ask about your AI stack.' },
+      { name: 'Coursera: Claude AI and Prompting for Everyone (Edureka)', url: 'https://www.coursera.org/learn/claude-ai-and-prompting-for-everyone', tags: ['free (audit)','4 hrs'], why: 'Claude-specific workflows and Claude Code basics — the bridge between AI fluency and actual tool-building.' },
+      { name: 'Tool: Canva Magic Studio', url: 'https://www.canva.com/magic/', tags: ['free tier'], why: 'AI social graphics, posts, and short videos. This is what digital-native marketers use daily — fluency here closes a visible gap on your resume.' },
+      { name: 'Tool: HubSpot AI Marketing Hub', url: 'https://www.hubspot.com/artificial-intelligence', tags: ['free tier'], why: 'Industry-standard marketing automation with AI built in. HubSpot familiarity is a hiring filter at many orgs — knowing it matters.' },
+      { name: '🏗 PROJECT: Sponsorship Proposal Generator', url: null, tags: ['project','~2 hrs'], why: 'Build a Claude prompt template that drafts full sponsorship proposals from a brief. Use your UFC/T-Mobile work as the framework. First portfolio piece.' },
+      { name: '🏗 PROJECT: Cause Marketing Campaign Brief Automator', url: null, tags: ['project','~2 hrs'], why: 'Claude-powered tool that takes a partner name + pillars and outputs a full 360 campaign brief. Reference your $3M T-Mobile program. Second portfolio piece.' },
+      { name: '🏗 PROJECT: Integrated Campaign Performance Dashboard', url: null, tags: ['project','~3 hrs'], why: 'Use Claude + Lovable or v0 to build a KPI tracking app. Mirrors the dashboards you managed at T-Mobile/Welcome.US. Third portfolio piece — strong for VP-level roles.' },
+    ]
+  },
+  {
+    id: 'p5',
+    cls: 'p5',
+    badge: '06 · Weeks 5–10',
+    badgeCls: 'badge-p5',
+    num: '06',
+    name: 'Vibe Coding — Build Real Apps',
+    meta: 'Weeks 5–10 · ~12 hrs · March 28 event lands right here',
+    note: 'Dr. Strange learning the mystic arts — scary at first, then you realize you\'re bending reality. No coding required. Claude + no-code tools = real, deployable apps. The March 28 event is your training montage made live.',
+    open: false,
+    courses: [
+      { name: 'Coursera: The Non-Coder\'s Guide to Vibe Coding', url: 'https://www.coursera.org/learn/non-coders-guide-to-vibe-coding', tags: ['free (audit)','3 hrs'], why: 'Covers Lovable, v0, and Gamma — the exact tools you\'ll use at March 28. Do this before the event.' },
+      { name: 'Great Learning: Free Vibe Coding with AI Tools', url: 'https://www.mygreatlearning.com/academy/learn-for-free/courses/learn-vibe-coding-with-ai-tools', tags: ['free','2 hrs','cert'], why: 'Quick free cert with live demos. Fast credibility win — complete before March 28.' },
+      { name: '📅 March 28 — Vibe Coding App Build Day', url: null, tags: ['event','in-person'], why: 'You\'ll be the most prepared person in the room if Phases 1–4 are underway. Build a marketing tool or start the Roblox game concept on the spot.' },
+      { name: 'Coursera: Vibe Coding Essentials — Build Apps with AI (Scrimba)', url: 'https://www.coursera.org/specializations/vibe-coding', tags: ['free (audit)','5 hrs'], why: 'Covers Claude Code, GitHub Copilot, Cursor — the tools showing up in AI-augmented marketing job postings right now.' },
+      { name: 'LinkedIn Learning: Model Context Protocol (MCP) Explained', url: 'https://www.linkedin.com/learning/model-context-protocol-mcp-hands-on-with-agentic-ai', tags: ['free (Premium)','55 min'], why: 'MCP is how Claude connects to real tools — Google Drive, Slack, CRMs. Understanding this is a major differentiator when talking to technical interviewers.' },
+    ]
+  },
+  {
+    id: 'p6',
+    cls: 'p6',
+    badge: '07 · Weeks 6–16',
+    badgeCls: 'badge-p6',
+    num: '07',
+    name: 'Roblox Game Dev with AI',
+    meta: 'Weeks 6–16 · ~10 hrs · Parallel track — father + son project',
+    note: 'The post-credits scene that becomes its own franchise. Start this once vibe coding clicks — the skills transfer directly. Your son is the creative director. You\'re the builder. Claude writes the Luau code. Roblox Studio is free.',
+    open: false,
+    courses: [
+      { name: 'Roblox Creator Docs: Studio Basics', url: 'https://create.roblox.com/docs', tags: ['free','2 hrs'], why: 'Start here together. Download Roblox Studio (free) and walk through the basics side by side with your son.' },
+      { name: 'YouTube: Asymmetrical Horror Game Tutorials', url: 'https://www.youtube.com/results?search_query=roblox+asymmetrical+horror+game+tutorial', tags: ['free','3 hrs'], why: 'Watch 2-3 tutorials on the exact genre your son loves. Reverse-engineer what makes them work before you build.' },
+      { name: 'Rebirth AI Plugin for Roblox Studio', url: 'https://userebirth.com', tags: ['low cost','~$9/mo'], why: 'Connects directly to Studio and writes Luau scripts live in your game from plain English. 5 free credits to start. Best tool available for non-coders building Roblox games.' },
+      { name: '🏗 PROJECT: Asymmetrical Horror Game Prototype', url: null, tags: ['project','3 hrs'], why: 'Claude designs the game concept doc (mechanics, maps, monster rules). Rebirth scripts it in Studio. Your son describes what he wants — you build it. Share with his friends for instant feedback.' },
+    ]
+  },
+  {
+    id: 'p7',
+    cls: 'p7',
+    badge: '08 · Final phase',
+    badgeCls: 'badge-p7',
+    num: '08',
+    name: 'Portfolio, Resume & Freelance Packaging',
+    meta: 'Weeks 10–14 · ~5 hrs · The Endgame',
+    note: 'Avengers: Endgame. Everything you\'ve built gets packaged into a story recruiters and clients can\'t ignore. By this point you have 3–4 real projects, multiple certs from brand-name institutions, and a completely different AI skill profile than when you started.',
+    open: false,
+    courses: [
+      { name: 'LinkedIn Learning: Comparing AI Tools — ChatGPT, Claude, Gemini, Perplexity', url: 'https://www.linkedin.com/learning/comparing-ai-research-tools-chatgpt-claude-gemini-and-perplexity', tags: ['free (Premium)','42 min'], why: 'Gives you sharp, confident answers when interviewers ask "what AI tools do you use and why Claude over ChatGPT?" — which they will.' },
+      { name: '🏗 PROJECT: AI Portfolio Page', url: null, tags: ['project','2 hrs'], why: 'Use Claude + Lovable to build a single-page site — who you are, your 3 AI projects, cert links. Drop it in your LinkedIn headline and email signature.' },
+      { name: '🏗 PROJECT: AI Consulting Service Menu', url: null, tags: ['project','1 hr'], why: 'Claude helps you define 2–3 services: AI-powered sponsorship strategy, integrated campaign automation, cause marketing program design. Price and package them.' },
+      { name: '🏗 PROJECT: Update Resume & LinkedIn with AI Skills', url: null, tags: ['project','1 hr'], why: 'Do this in Claude — I already know your resume inside out. New AI skills section, updated summary, reframed T-Mobile/Welcome.US work through an AI lens.' },
+    ]
+  }
+];
+
+function save() {
+  const state = {};
+  document.querySelectorAll('.check').forEach(el => {
+    if (el.dataset.id) state[el.dataset.id] = el.classList.contains('done');
+  });
+  try {
+    localStorage.setItem('dvega_curriculum_v2', JSON.stringify(state));
+    const el = document.getElementById('last-saved');
+    if (el) el.textContent = 'Saved ' + new Date().toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+  } catch(e) {}
+}
+
+function load() {
+  try { return JSON.parse(localStorage.getItem('dvega_curriculum_v2') || '{}'); } catch(e) { return {}; }
+}
+
+function updateProgress() {
+  const all = document.querySelectorAll('.check');
+  const done = document.querySelectorAll('.check.done').length;
+  const total = all.length;
+  document.getElementById('done-num').textContent = done;
+  document.getElementById('total-num').textContent = total;
+  const pct = total ? Math.round(done/total*100) : 0;
+  document.getElementById('bar').style.width = pct + '%';
+  document.getElementById('pct').textContent = pct + '% complete';
+
+  // Update per-phase counters
+  data.forEach(phase => {
+    const pChecks = document.querySelectorAll(`[data-phase="${phase.id}"]`);
+    const pDone = [...pChecks].filter(c => c.classList.contains('done')).length;
+    const el = document.getElementById(`prog-${phase.id}`);
+    if (el) el.textContent = `${pDone}/${pChecks.length}`;
+  });
+}
+
+function resetAll() {
+  if (!confirm('Reset all progress?')) return;
+  document.querySelectorAll('.check').forEach(el => el.classList.remove('done'));
+  try { localStorage.removeItem('dvega_curriculum_v2'); } catch(e) {}
+  updateProgress();
+}
+
+function togglePhase(phaseEl) {
+  phaseEl.classList.toggle('open');
+}
+
+function render() {
+  const saved = load();
+  const container = document.getElementById('phases');
+
+  data.forEach(phase => {
+    const div = document.createElement('div');
+    div.className = `phase ${phase.cls}${phase.open ? ' open' : ''}`;
+
+    const coursesHtml = phase.courses.map((c, ci) => {
+      const id = `${phase.id}-${ci}`;
+      const isDone = saved[id] || false;
+      const nameHtml = c.url
+        ? `<a href="${c.url}" target="_blank" rel="noopener">${c.name}</a>`
+        : c.name;
+      const tagsHtml = c.tags.map(t => {
+        let cls = 'tag';
+        if (t === 'free' || t === 'free (audit)' || t === 'free (Premium)' || t === 'free tier' || t === 'free cert') cls += ' free';
+        else if (t.includes('$') || t === 'low cost') cls += ' low';
+        else if (t === 'cert') cls += ' cert';
+        else if (t === 'project') cls += ' project';
+        else if (t === 'event') cls += ' event';
+        else if (t === 'prestige') cls += ' prestige';
+        else if (t === 'reference') cls += ' cert';
+        else if (t === 'new 2026') cls += ' free';
+        return `<span class="${cls}">${t}</span>`;
+      }).join('');
+      return `<div class="course">
+        <div class="check${isDone ? ' done' : ''}" data-id="${id}" data-phase="${phase.id}" onclick="toggle(this)"></div>
+        <div class="course-info">
+          <div class="course-name">${nameHtml}</div>
+          <div class="course-tags">${tagsHtml}</div>
+          <div class="course-why">${c.why}</div>
+        </div>
+      </div>`;
+    }).join('');
+
+    div.innerHTML = `
+      <div class="phase-header" onclick="togglePhase(this.parentElement)">
+        <div class="phase-num">${phase.num}</div>
+        <div class="phase-title-wrap">
+          <div class="phase-name">${phase.name}</div>
+          <div class="phase-meta">${phase.meta}</div>
+        </div>
+        <span class="phase-badge ${phase.badgeCls}">${phase.badge}</span>
+        <div class="phase-progress" id="prog-${phase.id}">0/${phase.courses.length}</div>
+        <span class="chevron">▶</span>
+      </div>
+      <div class="phase-body">
+        <p class="phase-note">${phase.note}</p>
+        ${coursesHtml}
+      </div>`;
+
+    container.appendChild(div);
+  });
+
+  updateProgress();
+}
+
+function toggle(el) {
+  el.classList.toggle('done');
+  save();
+  updateProgress();
+}
+
+render();
+</script>
+</body>
+</html>
