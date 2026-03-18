@@ -6,7 +6,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="My Plan">
-<meta name="theme-color" content="#0f1117">
+<meta name="theme-color" content="#002D72">
 <title>My Plan</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 <script>
@@ -14,10 +14,10 @@
   try {
     const c=document.createElement('canvas');c.width=180;c.height=180;
     const x=c.getContext('2d');
-    x.fillStyle='#0f1117';x.fillRect(0,0,180,180);
-    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.fillStyle='#1e2330';x.fill();
-    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.strokeStyle='#e8a020';x.lineWidth=4;x.stroke();
-    x.fillStyle='#e8a020';x.font='bold 56px -apple-system,sans-serif';
+    x.fillStyle='#002D72';x.fillRect(0,0,180,180);
+    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.fillStyle='#001A4A';x.fill();
+    x.beginPath();x.arc(90,90,72,0,Math.PI*2);x.strokeStyle='#FF5910';x.lineWidth=4;x.stroke();
+    x.fillStyle='#FF5910';x.font='bold 56px -apple-system,sans-serif';
     x.textAlign='center';x.textBaseline='middle';x.fillText('MP',90,92);
     const l=document.createElement('link');l.rel='apple-touch-icon';l.href=c.toDataURL();
     document.head.appendChild(l);
@@ -27,23 +27,23 @@
 <style>
 /* ── RESET & ROOT ─────────────────────────────── */
 :root {
-  --slate:  #0f1117;
-  --slate2: #181c27;
-  --slate3: #1e2330;
-  --slate4: #252c3d;
-  --border: rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.13);
-  --amber:  #e8a020;
-  --amber-d:rgba(232,160,32,0.14);
-  --coral:  #e85c3a;
-  --coral-d:rgba(232,92,58,0.12);
-  --green:  #2db87a;
-  --green-d:rgba(45,184,122,0.12);
-  --blue:   #4a9eff;
-  --blue-d: rgba(74,158,255,0.12);
-  --text:   #e8e6df;
-  --text2:  #9a9690;
-  --text3:  #5a5650;
+  --slate:  #ffffff;
+  --slate2: #f0f4fb;
+  --slate3: #e8eef8;
+  --slate4: #d8e2f0;
+  --border: rgba(0,45,114,0.12);
+  --border2:rgba(0,45,114,0.22);
+  --amber:  #FF5910;
+  --amber-d:rgba(255,89,16,0.10);
+  --coral:  #e03000;
+  --coral-d:rgba(224,48,0,0.10);
+  --green:  #1a8a4a;
+  --green-d:rgba(26,138,74,0.10);
+  --blue:   #002D72;
+  --blue-d: rgba(0,45,114,0.10);
+  --text:   #001A4A;
+  --text2:  #4A6080;
+  --text3:  #8A9BB0;
   --r:      12px;
   --rsm:    8px;
   --nav:    56px;
@@ -51,7 +51,7 @@
   --safe-b: env(safe-area-inset-bottom, 0px);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-html, body { height: 100%; overflow: hidden; background: var(--slate); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; }
+html, body { height: 100%; overflow: hidden; background: #ffffff; color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; }
 
 /* ── APP SHELL ────────────────────────────────── */
 /* The entire app lives in this fixed container    */
@@ -69,16 +69,16 @@ html, body { height: 100%; overflow: hidden; background: var(--slate); color: va
   position: fixed;
   bottom: 0; left: 0; right: 0;
   height: calc(var(--nav) + var(--safe-b));
-  background: var(--slate2);
-  border-top: 1px solid var(--border);
+  background: #002D72;
+  border-top: 1px solid rgba(0,45,114,0.3);
   display: flex;
   align-items: flex-start;
   padding-top: 6px;
   padding-bottom: var(--safe-b);
   z-index: 200;
 }
-.nb { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; background: none; border: none; cursor: pointer; color: var(--text3); font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.03em; padding: 2px; transition: color 0.15s; }
-.nb.on { color: var(--amber); }
+.nb { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 3px; background: none; border: none; cursor: pointer; color: rgba(255,255,255,0.55); font-family: 'DM Sans', sans-serif; font-size: 10px; letter-spacing: 0.03em; padding: 2px; transition: color 0.15s; }
+.nb.on { color: #FF5910; }
 .ni { font-size: 20px; line-height: 1; }
 
 /* ── TABS ─────────────────────────────────────── */
@@ -95,14 +95,14 @@ html, body { height: 100%; overflow: hidden; background: var(--slate); color: va
 /* Sticky header inside a tab — never scrolls */
 .th {
   flex-shrink: 0;
-  background: var(--slate);
-  border-bottom: 1px solid var(--border);
+  background: #002D72;
+  border-bottom: 1px solid rgba(0,45,114,0.2);
   padding: calc(var(--safe-t) + 16px) 16px 12px;
   z-index: 10;
 }
-.th h1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); line-height: 1; }
-.th h1 span { color: var(--amber); }
-.th p { font-size: 11px; color: var(--text3); margin-top: 3px; letter-spacing: 0.04em; }
+.th h1 { font-family: 'DM Serif Display', serif; font-size: 22px; color: #ffffff; line-height: 1; }
+.th h1 span { color: #FF5910; }
+.th p { font-size: 11px; color: rgba(255,255,255,0.6); margin-top: 3px; letter-spacing: 0.04em; }
 
 /* Scrollable body inside a tab */
 .tb {
@@ -119,7 +119,7 @@ html, body { height: 100%; overflow: hidden; background: var(--slate); color: va
   display: flex;
   overflow-x: auto;
   border-bottom: 1px solid var(--border);
-  background: var(--slate);
+  background: #ffffff;
 }
 .subnav button {
   padding: 10px 14px; font-size: 11px; font-weight: 500; color: var(--text3);
@@ -133,8 +133,8 @@ html, body { height: 100%; overflow: hidden; background: var(--slate); color: va
 
 /* ── CARDS ────────────────────────────────────── */
 .card { background: var(--slate3); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin: 10px 16px 0; }
-.card-hd { padding: 10px 14px; background: var(--slate4); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; cursor: pointer; }
-.card-hd h3 { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--text); flex: 1; }
+.card-hd { padding: 10px 14px; background: #002D72; border-bottom: 1px solid rgba(0,45,114,0.15); display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.card-hd h3 { font-family: 'DM Serif Display', serif; font-size: 15px; color: #ffffff; flex: 1; }
 .card-bd { padding: 12px 14px; }
 .card-bd.hide { display: none; }
 
@@ -151,27 +151,27 @@ html, body { height: 100%; overflow: hidden; background: var(--slate); color: va
 .b-hi  { background: rgba(74,158,255,0.15); color: var(--blue); border: 1px solid rgba(74,158,255,0.3); }
 
 /* ── SECTION HEADS ────────────────────────────── */
-.sh { font-size: 10px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; padding: 14px 16px 6px; }
+.sh { font-size: 10px; font-weight: 500; color: #002D72; text-transform: uppercase; letter-spacing: 0.07em; padding: 14px 16px 6px; font-weight: 600; }
 
 /* ── BUTTONS ──────────────────────────────────── */
-.btn-p { width: 100%; padding: 13px; background: var(--amber); color: var(--slate); border: none; border-radius: var(--rsm); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.2s; margin-top: 8px; }
+.btn-p { width: 100%; padding: 13px; background: var(--amber); color: #ffffff; border: none; border-radius: var(--rsm); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; transition: opacity 0.2s; margin-top: 8px; }
 .btn-p:hover { opacity: 0.88; }
 .btn-p:disabled { opacity: 0.4; cursor: default; }
-.btn-s { padding: 9px 16px; background: var(--slate3); color: var(--text2); border: 1px solid var(--border); border-radius: var(--rsm); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.15s; }
+.btn-s { padding: 9px 16px; background: #e8eef8; color: #002D72; border: 1px solid var(--border); border-radius: var(--rsm); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.15s; }
 .btn-s:hover { border-color: var(--border2); color: var(--text); }
-.btn-sm { padding: 6px 12px; font-size: 12px; background: var(--slate4); color: var(--text2); border: 1px solid var(--border); border-radius: var(--rsm); cursor: pointer; font-family: 'DM Sans', sans-serif; }
+.btn-sm { padding: 6px 12px; font-size: 12px; background: #e8eef8; color: #002D72; border: 1px solid var(--border); border-radius: var(--rsm); cursor: pointer; font-family: 'DM Sans', sans-serif; }
 
 /* ── INPUTS ───────────────────────────────────── */
 .lbl { font-size: 11px; font-weight: 500; color: var(--text2); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px; display: block; }
-textarea, input[type=text], select {
-  width: 100%; background: var(--slate3); border: 1px solid var(--border);
+textarea, input[type=text], select, input[type=number] {
+  width: 100%; background: #ffffff; border: 1px solid var(--border);
   border-radius: var(--rsm); color: var(--text); font-family: 'DM Sans', sans-serif;
   font-size: 13px; padding: 9px 12px; line-height: 1.5; transition: border-color 0.2s;
 }
 textarea { resize: vertical; min-height: 64px; }
 textarea:focus, input:focus, select:focus { outline: none; border-color: var(--border2); }
 textarea::placeholder, input::placeholder { color: var(--text3); }
-select option { background: var(--slate3); }
+select option { background: #ffffff; color: var(--text); }
 .ig { margin-bottom: 16px; }
 
 /* ── TAG TOGGLES ──────────────────────────────── */
@@ -192,9 +192,9 @@ select option { background: var(--slate3); }
 
 /* ── SPINNER ──────────────────────────────────── */
 .spin-wrap { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px 24px; gap: 14px; }
-.spin { width: 34px; height: 34px; border: 2px solid var(--border); border-top-color: var(--amber); border-radius: 50%; animation: sp 0.8s linear infinite; }
+.spin { width: 34px; height: 34px; border: 2px solid #d8e2f0; border-top-color: #FF5910; border-radius: 50%; animation: sp 0.8s linear infinite; }
 @keyframes sp { to { transform: rotate(360deg); } }
-.spin-txt { font-size: 13px; color: var(--text3); text-align: center; line-height: 1.6; }
+.spin-txt { font-size: 13px; color: #4A6080; text-align: center; line-height: 1.6; }
 
 /* ── MEAL OPTIONS ─────────────────────────────── */
 .meal-opt { background: var(--slate3); border: 1px solid var(--border); border-radius: var(--r); padding: 13px; cursor: pointer; transition: all 0.18s; position: relative; margin-bottom: 8px; }
@@ -214,9 +214,9 @@ select option { background: var(--slate3); }
 
 /* ── WEEK PLAN ────────────────────────────────── */
 .day-row { background: var(--slate3); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; margin-bottom: 8px; }
-.day-rh { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: var(--slate4); border-bottom: 1px solid var(--border); }
-.day-lbl { font-size: 11px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; min-width: 26px; }
-.day-dn { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--text); flex: 1; margin-left: 4px; cursor: pointer; }
+.day-rh { display: flex; align-items: center; gap: 8px; padding: 9px 12px; background: #002D72; border-bottom: 1px solid rgba(0,45,114,0.15); }
+.day-lbl { font-size: 11px; font-weight: 500; color: rgba(255,255,255,0.7); text-transform: uppercase; letter-spacing: 0.07em; min-width: 26px; }
+.day-dn { font-family: 'DM Serif Display', serif; font-size: 14px; color: #ffffff; flex: 1; margin-left: 4px; cursor: pointer; }
 .day-dn.link { color: var(--amber); }
 .day-bd { padding: 10px 12px; }
 .meal-g { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -257,7 +257,7 @@ select option { background: var(--slate3); }
 /* ── PROGRESSION ──────────────────────────────── */
 .prog-track { display: flex; gap: 6px; padding: 12px 16px; overflow-x: auto; }
 .pw { display: flex; flex-direction: column; align-items: center; gap: 3px; min-width: 44px; }
-.pn { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: var(--text3); cursor: pointer; transition: all 0.15s; }
+.pn { width: 34px; height: 34px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; color: #8A9BB0; cursor: pointer; transition: all 0.15s; background: #f0f4fb; }
 .pn.cur { border-color: var(--amber); color: var(--amber); background: var(--amber-d); }
 .pn.done { border-color: var(--green); color: var(--green); background: var(--green-d); }
 .pl { font-size: 9px; color: var(--text3); text-align: center; }
@@ -272,7 +272,7 @@ select option { background: var(--slate3); }
 /* ── INVENTORY ────────────────────────────────── */
 .inv-item { border-bottom: 1px solid var(--border); }
 .inv-row { display: flex; align-items: center; gap: 10px; padding: 10px 16px; cursor: pointer; }
-.inv-row:active { background: var(--slate4); }
+.inv-row:active { background: #e8eef8; }
 .inv-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 .s-g { background: var(--green); }
 .s-l { background: var(--amber); }
@@ -281,20 +281,20 @@ select option { background: var(--slate3); }
 .inv-qty { font-size: 12px; color: var(--text2); margin-right: 4px; }
 .inv-stat { font-size: 10px; color: var(--text3); padding: 2px 7px; border: 1px solid var(--border); border-radius: 10px; }
 .inv-arr { font-size: 11px; color: var(--text3); }
-.inv-edit { display: none; padding: 10px 16px 12px; border-top: 1px solid var(--border); background: var(--slate4); }
+.inv-edit { display: none; padding: 10px 16px 12px; border-top: 1px solid var(--border); background: #f0f4fb; }
 .inv-edit.open { display: block; }
 .inv-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
 .inv-lbl { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
 .inv-actions { display: flex; gap: 7px; margin-top: 10px; }
-.inv-save { flex: 1; padding: 8px; background: var(--amber); color: var(--slate); border: none; border-radius: var(--rsm); font-size: 13px; font-weight: 500; cursor: pointer; }
+.inv-save { flex: 1; padding: 8px; background: var(--amber); color: #ffffff; border: none; border-radius: var(--rsm); font-size: 13px; font-weight: 500; cursor: pointer; }
 .inv-cancel { padding: 8px 14px; background: var(--slate3); color: var(--text2); border: 1px solid var(--border); border-radius: var(--rsm); font-size: 13px; cursor: pointer; }
 .inv-del { padding: 8px 14px; background: var(--coral-d); color: var(--coral); border: 1px solid rgba(232,92,58,0.3); border-radius: var(--rsm); font-size: 13px; cursor: pointer; }
-.inv-loc-head { padding: 10px 16px 4px; font-size: 10px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; background: var(--slate); border-bottom: 1px solid var(--border); }
-.add-form-wrap { flex-shrink: 0; padding: 8px 16px; border-bottom: 1px solid var(--border); background: var(--slate); }
+.inv-loc-head { padding: 10px 16px 4px; font-size: 10px; font-weight: 600; color: #002D72; text-transform: uppercase; letter-spacing: 0.07em; background: #f0f4fb; border-bottom: 1px solid var(--border); }
+.add-form-wrap { flex-shrink: 0; padding: 8px 16px; border-bottom: 1px solid var(--border); background: #ffffff; }
 .add-form-inner { background: var(--slate3); border: 1px solid var(--border); border-radius: var(--r); padding: 12px; margin-top: 8px; }
 
 /* ── LOG ──────────────────────────────────────── */
-.log-entry { background: var(--slate3); border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px; margin: 8px 16px 0; }
+.log-entry { background: #f0f4fb; border: 1px solid var(--border); border-radius: var(--r); padding: 12px 14px; margin: 8px 16px 0; }
 .log-date { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
 .log-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
 .log-lbl { font-size: 12px; color: var(--text2); flex: 1; }
@@ -304,19 +304,19 @@ select option { background: var(--slate3); }
 .star.on { color: var(--amber); }
 .toggle-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
 .toggle-lbl { font-size: 13px; color: var(--text2); flex: 1; }
-.tog { width: 42px; height: 24px; border-radius: 12px; background: var(--slate4); border: 1px solid var(--border); cursor: pointer; position: relative; transition: background 0.2s; flex-shrink: 0; }
+.tog { width: 42px; height: 24px; border-radius: 12px; background: #d8e2f0; border: 1px solid var(--border); cursor: pointer; position: relative; transition: background 0.2s; flex-shrink: 0; }
 .tog.on { background: var(--green); border-color: var(--green); }
-.tog-k { width: 18px; height: 18px; border-radius: 50%; background: var(--text2); position: absolute; top: 2px; left: 2px; transition: all 0.2s; pointer-events: none; }
+.tog-k { width: 18px; height: 18px; border-radius: 50%; background: #8A9BB0; position: absolute; top: 2px; left: 2px; transition: all 0.2s; pointer-events: none; }
 .tog.on .tog-k { left: 20px; background: white; }
 
 /* ── MODAL ────────────────────────────────────── */
 .modal-bg { position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 300; display: none; align-items: flex-end; }
 .modal-bg.open { display: flex; }
-.modal { background: var(--slate2); border-radius: 20px 20px 0 0; width: 100%; max-height: 88vh; display: flex; flex-direction: column; }
+.modal { background: #ffffff; border-radius: 20px 20px 0 0; width: 100%; max-height: 88vh; display: flex; flex-direction: column; }
 .modal-hd { flex-shrink: 0; padding: 12px 16px 10px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
 .modal-title { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--text); flex: 1; }
 .modal-close { background: none; border: none; color: var(--text3); font-size: 22px; cursor: pointer; padding: 0 4px; }
-.modal-handle { width: 36px; height: 4px; border-radius: 2px; background: var(--border2); margin: 10px auto 0; flex-shrink: 0; }
+.modal-handle { width: 36px; height: 4px; border-radius: 2px; background: #d8e2f0; margin: 10px auto 0; flex-shrink: 0; }
 .modal-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 14px 16px calc(var(--safe-b) + 20px); }
 .rec-sec { margin-bottom: 16px; }
 .rec-sec-t { font-size: 10px; font-weight: 500; color: var(--text3); text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 8px; }
@@ -331,16 +331,33 @@ select option { background: var(--slate3); }
 .step-tip { margin: 8px 0; padding: 9px 12px; background: var(--amber-d); border-left: 3px solid var(--amber); font-size: 12px; color: var(--amber); font-style: italic; }
 
 /* ── SPLASH ───────────────────────────────────── */
-#splash { position: fixed; inset: 0; background: var(--slate); z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transition: opacity 0.4s; }
-.splash-icon { width: 80px; height: 80px; border-radius: 20px; background: var(--slate3); border: 2px solid var(--amber); display: flex; align-items: center; justify-content: center; }
-.splash-icon span { font-family: 'DM Serif Display', serif; font-size: 28px; color: var(--amber); }
-.splash-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--text); }
+#splash { position: fixed; inset: 0; background: #002D72; z-index: 999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; transition: opacity 0.4s; }
+.splash-icon { width: 80px; height: 80px; border-radius: 20px; background: rgba(255,255,255,0.15); border: 2px solid #FF5910; display: flex; align-items: center; justify-content: center; }
+.splash-icon span { font-family: 'DM Serif Display', serif; font-size: 28px; color: #FF5910; }
+.splash-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: #ffffff; }
 .splash-title em { color: var(--amber); font-style: normal; }
-.splash-sub { font-size: 11px; color: var(--text3); letter-spacing: 0.08em; text-transform: uppercase; }
+.splash-sub { font-size: 11px; color: rgba(255,255,255,0.6); letter-spacing: 0.08em; text-transform: uppercase; }
 
 /* ── ERROR ────────────────────────────────────── */
 .err { background: var(--coral-d); border: 1px solid var(--coral); border-radius: var(--rsm); padding: 11px 13px; font-size: 13px; color: var(--coral); margin: 10px 0; }
 .divider { height: 1px; background: var(--border); margin: 14px 0; }
+
+/* ── HABIT CARDS ──────────────────────────────── */
+.hcard { border-radius: var(--r); padding: 14px 12px; cursor: pointer; user-select: none; transition: all 0.2s; position: relative; min-height: 90px; display: flex; flex-direction: column; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+.hcard:active { transform: scale(0.96); }
+.hcard.done { opacity: 0.55; }
+.hcard-icon { font-size: 22px; line-height: 1; margin-bottom: 6px; }
+.hcard-name { font-size: 13px; font-weight: 500; color: #ffffff; line-height: 1.2; }
+.hcard-prog { font-size: 11px; margin-top: 4px; }
+.hcard-check { position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 11px; transition: all 0.2s; }
+.hcard.done .hcard-check { background: rgba(255,255,255,0.25); border-color: transparent; }
+/* habit colors matching Habit app palette */
+.hc-purple { background: #002D72; }
+.hc-olive  { background: #003DA5; }
+.hc-dkgreen{ background: #001A4A; }
+.hc-brown  { background: #FF5910; }
+.hc-teal   { background: #002D72; }
+.hc-water  { background: #003DA5; }
 </style>
 </head>
 <body>
@@ -364,6 +381,8 @@ select option { background: var(--slate3); }
     <div class="tb" id="today-body">
       <!-- rendered by JS -->
     </div>
+    <!-- Habit FAB — always visible on Today tab -->
+    <button id="habit-fab" onclick="openHabits()" title="Daily habits" style="position:absolute;bottom:16px;right:16px;width:50px;height:50px;border-radius:50%;background:var(--amber);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 20px rgba(232,160,32,0.45);z-index:50;transition:transform 0.15s;">✓</button>
   </div>
 
   <!-- ══ TAB 2: NEXT WEEK ══════════════════════ -->
@@ -647,6 +666,35 @@ select option { background: var(--slate3); }
   <button class="nb" onclick="showTab('weight')" id="nb-weight"><span class="ni">⚖</span>Weight</button>
 </div>
 
+<!-- HABIT MODAL -->
+<div class="modal-bg" id="habit-bg">
+  <div class="modal" style="border-radius:20px 20px 0 0;max-height:92vh;">
+    <div class="modal-handle"></div>
+    <div style="flex-shrink:0;padding:14px 16px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-family:'DM Serif Display',serif;font-size:18px;color:var(--text);">Daily habits</div>
+        <div style="font-size:11px;color:var(--text3);margin-top:2px;" id="habit-date"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;">
+        <!-- Progress ring -->
+        <div style="position:relative;width:48px;height:48px;">
+          <svg width="48" height="48" style="transform:rotate(-90deg);">
+            <circle cx="24" cy="24" r="20" fill="none" stroke="var(--border)" stroke-width="3"/>
+            <circle cx="24" cy="24" r="20" fill="none" stroke="var(--amber)" stroke-width="3"
+              stroke-dasharray="125.66" id="habit-ring"
+              stroke-dashoffset="125.66" stroke-linecap="round" style="transition:stroke-dashoffset 0.4s ease;"/>
+          </svg>
+          <div id="habit-ring-txt" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;color:var(--amber);">0/4</div>
+        </div>
+        <button onclick="closeHabits()" style="background:none;border:none;color:var(--text3);font-size:22px;cursor:pointer;padding:0 4px;line-height:1;">✕</button>
+      </div>
+    </div>
+    <div style="padding:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;" id="habit-cards">
+      <!-- rendered by JS -->
+    </div>
+  </div>
+</div>
+
 <!-- RECIPE MODAL -->
 <div class="modal-bg" id="recipe-bg" onclick="closeModal(event)">
   <div class="modal">
@@ -866,6 +914,7 @@ let S = {
   selMeals: [],
   logs: [],
   weights: [],
+  habits: { workout: false, dailyFix: false, water: 0, meds: false, lastReset: null },
   feelRating: 0,
   mealRating: 0,
 };
@@ -934,7 +983,7 @@ function renderToday() {
     <div class="card-hd" onclick="toggleCard('wo-today')">
       <h3>${dayName} — ${wo.type}</h3>
       <span class="badge ${bCls}">${wo.lbl.toUpperCase()}</span>
-      <span style="color:var(--text3);font-size:12px;margin-left:4px;">▾</span>
+      <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:4px;">▾</span>
     </div>
     <div class="card-bd hide" id="wo-today">
       <div class="ex-list">`;
@@ -1305,7 +1354,7 @@ function renderWorkout() {
     <div class="card">
       <div class="card-hd" onclick="toggleCard('wo-${day}')">
         <h3>${wo.type}</h3><span class="badge ${bCls}">${wo.lbl.toUpperCase()}</span>
-        <span style="color:var(--text3);font-size:12px;margin-left:4px;">▾</span>
+        <span style="color:rgba(255,255,255,0.6);font-size:12px;margin-left:4px;">▾</span>
       </div>
       <div class="card-bd hide" id="wo-${day}"><div class="ex-list">${exHtml}</div></div>
     </div>`;
@@ -1573,7 +1622,7 @@ function renderRecipeHTML(r) {
 
   // Cook mode toggle
   html += `<div style="display:flex;gap:8px;margin-bottom:14px;">
-    <button onclick="startCookMode()" style="flex:1;padding:10px;background:var(--amber);color:var(--slate);border:none;border-radius:var(--rsm);font-size:13px;font-weight:500;cursor:pointer;">Start cook mode →</button>
+    <button onclick="startCookMode()" style="flex:1;padding:10px;background:var(--amber);color:#ffffff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:500;cursor:pointer;">Start cook mode →</button>
   </div>`;
 
   // Ingredients
@@ -1624,15 +1673,15 @@ function renderCookStep() {
         <div style="font-size:11px;color:var(--text3);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.05em;">Timer</div>
         <div id="cook-timer-display" style="font-family:'DM Serif Display',serif;font-size:36px;color:var(--amber);letter-spacing:2px;">${formatTimer(timerSecs)}</div>
         <div style="display:flex;gap:8px;justify-content:center;margin-top:10px;">
-          <button onclick="startStepTimer(${timerSecs})" style="padding:7px 16px;background:var(--amber);color:var(--slate);border:none;border-radius:var(--rsm);font-size:13px;font-weight:500;cursor:pointer;">Start</button>
+          <button onclick="startStepTimer(${timerSecs})" style="padding:7px 16px;background:var(--amber);color:#ffffff;border:none;border-radius:var(--rsm);font-size:13px;font-weight:500;cursor:pointer;">Start</button>
           <button onclick="stopTimer()" style="padding:7px 16px;background:var(--slate3);color:var(--text2);border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;cursor:pointer;">Stop</button>
         </div>
       </div>` : ''}
       <div style="display:flex;gap:8px;">
         ${cookModeStep > 0 ? `<button onclick="prevCookStep()" style="padding:11px 18px;background:var(--slate3);color:var(--text2);border:1px solid var(--border);border-radius:var(--rsm);font-size:13px;cursor:pointer;">← Back</button>` : ''}
         ${cookModeStep < total-1
-          ? `<button onclick="nextCookStep()" style="flex:1;padding:11px;background:var(--amber);color:var(--slate);border:none;border-radius:var(--rsm);font-size:14px;font-weight:500;cursor:pointer;">Next step →</button>`
-          : `<button onclick="exitCookMode()" style="flex:1;padding:11px;background:var(--green);color:var(--slate);border:none;border-radius:var(--rsm);font-size:14px;font-weight:500;cursor:pointer;">Done! 🎉</button>`}
+          ? `<button onclick="nextCookStep()" style="flex:1;padding:11px;background:var(--amber);color:#ffffff;border:none;border-radius:var(--rsm);font-size:14px;font-weight:500;cursor:pointer;">Next step →</button>`
+          : `<button onclick="exitCookMode()" style="flex:1;padding:11px;background:var(--green);color:#ffffff;border:none;border-radius:var(--rsm);font-size:14px;font-weight:500;cursor:pointer;">Done! 🎉</button>`}
       </div>
       <button onclick="exitCookMode()" style="width:100%;margin-top:8px;padding:8px;background:none;color:var(--text3);border:none;font-size:12px;cursor:pointer;">Exit cook mode</button>
     </div>`;
@@ -1931,6 +1980,127 @@ function drawWeightChart(weights) {
   });
 }
 
+// ═══════ HABITS ══════════════════════════════════
+function resetHabitsIfNewDay() {
+  const today = new Date().toDateString();
+  if (S.habits.lastReset !== today) {
+    S.habits = { workout: false, dailyFix: false, water: 0, meds: false, lastReset: today, dismissed: false };
+    save();
+  }
+}
+
+function allHabitsDone() {
+  return S.habits.workout && S.habits.dailyFix && S.habits.water >= 3 && S.habits.meds;
+}
+
+function openHabits() {
+  resetHabitsIfNewDay();
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const now = new Date();
+  document.getElementById('habit-date').textContent = `${days[now.getDay()]}, ${months[now.getMonth()]} ${now.getDate()}`;
+  renderHabitCards();
+  document.getElementById('habit-bg').classList.add('open');
+}
+
+function closeHabits() {
+  document.getElementById('habit-bg').classList.remove('open');
+  // Mark dismissed so it doesn't auto-reopen this session
+  // (resets with habits at midnight via lastReset check)
+  S.habits.dismissed = true;
+  save();
+}
+
+function renderHabitCards() {
+  const h = S.habits;
+  const doneCount = (h.workout ? 1 : 0) + (h.dailyFix ? 1 : 0) + (h.water >= 3 ? 1 : 0) + (h.meds ? 1 : 0);
+
+  // Update progress ring — circumference of r=20 circle = 125.66
+  const circ = 125.66;
+  const offset = circ - (doneCount / 4) * circ;
+  const ring = document.getElementById('habit-ring');
+  const ringTxt = document.getElementById('habit-ring-txt');
+  if (ring) { ring.style.strokeDashoffset = offset; ring.style.stroke = doneCount === 4 ? 'var(--green)' : 'var(--amber)'; }
+  if (ringTxt) { ringTxt.textContent = `${doneCount}/4`; ringTxt.style.color = doneCount === 4 ? 'var(--green)' : 'var(--amber)'; }
+
+  const cards = [
+    {
+      key: 'workout',
+      icon: '💪',
+      name: 'Workout (Full)',
+      prog: h.workout ? 'Done' : '0/1',
+      color: 'hc-olive',
+      done: h.workout,
+    },
+    {
+      key: 'dailyFix',
+      icon: '🌟',
+      name: 'Daily 10-min Fix',
+      prog: h.dailyFix ? 'Done' : '0/1',
+      color: 'hc-purple',
+      done: h.dailyFix,
+    },
+    {
+      key: 'water',
+      icon: '💧',
+      name: 'Drink Water',
+      prog: `${h.water}/3`,
+      color: 'hc-water',
+      done: h.water >= 3,
+    },
+    {
+      key: 'meds',
+      icon: '💊',
+      name: 'Evening Meds',
+      prog: h.meds ? 'Done' : '0/1',
+      color: 'hc-brown',
+      done: h.meds,
+    },
+  ];
+
+  document.getElementById('habit-cards').innerHTML = cards.map(c => `
+    <div class="hcard ${c.color} ${c.done ? 'done' : ''}" onclick="tapHabit('${c.key}')">
+      <div>
+        <div class="hcard-icon">${c.icon}</div>
+        <div class="hcard-name">${c.name}</div>
+        <div class="hcard-prog" style="color:${c.done ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.7)'};">${c.prog}</div>
+      </div>
+      <div class="hcard-check">${c.done ? '✓' : ''}</div>
+    </div>`).join('');
+
+  // Auto-dismiss if all done
+  if (allHabitsDone()) {
+    setTimeout(() => closeHabits(), 800);
+  }
+}
+
+function tapHabit(key) {
+  resetHabitsIfNewDay();
+  if (key === 'dailyFix') {
+    S.habits.dailyFix = !S.habits.dailyFix;
+  } else if (key === 'workout') {
+    S.habits.workout = !S.habits.workout;
+    // Auto-fill workout log toggle
+    const tog = document.getElementById('wo-tog');
+    if (tog && S.habits.workout) tog.classList.add('on');
+    document.getElementById('wo-detail').style.display = S.habits.workout ? 'block' : 'none';
+  } else if (key === 'water') {
+    S.habits.water = S.habits.water >= 3 ? 0 : S.habits.water + 1;
+  } else if (key === 'meds') {
+    S.habits.meds = !S.habits.meds;
+    // Dismiss Adzenys reminder on Today tab if meds checked
+    renderToday();
+  }
+  save();
+  renderHabitCards();
+}
+
+function shouldShowHabits() {
+  // Show if: not all done AND not manually dismissed today
+  resetHabitsIfNewDay();
+  return !allHabitsDone() && !S.habits.dismissed;
+}
+
 // ═══════ INIT ════════════════════════════════════
 function init() {
   load();
@@ -1946,7 +2116,14 @@ function init() {
   }
   setTimeout(() => {
     const splash = document.getElementById('splash');
-    if (splash) { splash.style.opacity = '0'; setTimeout(() => splash.remove(), 400); }
+    if (splash) {
+      splash.style.opacity = '0';
+      setTimeout(() => {
+        splash.remove();
+        // Auto-open habits after splash if needed
+        if (shouldShowHabits()) openHabits();
+      }, 400);
+    }
   }, 700);
 }
 
