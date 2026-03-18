@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Vega — Claude Apps</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #ffffff;
+    color: #002D72;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,45,114,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,45,114,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Logo */
+  .logo-wrap {
+    margin-bottom: 28px;
+    animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* Name */
+  .name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 8vw, 52px);
+    font-weight: 400;
+    color: #002D72;
+    line-height: 1;
+    text-align: center;
+    animation: floatIn 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .name em {
+    font-style: italic;
+    color: #FF5910;
+  }
+
+  /* Tagline */
+  .tagline {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #FF5910;
+    margin-top: 10px;
+    margin-bottom: 44px;
+    text-align: center;
+    animation: floatIn 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  /* App cards */
+  .apps {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    animation: floatIn 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .app-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 20px 22px;
+    background: #ffffff;
+    border: 1px solid #d0d9ec;
+    border-radius: 16px;
+    text-decoration: none;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+  }
+
+  .app-card:hover {
+    border-color: #FF5910;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255,89,16,0.12);
+  }
+
+  .app-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 22px;
+  }
+
+  .icon-blue { background: rgba(0,45,114,0.08); }
+  .icon-orange { background: rgba(255,89,16,0.09); }
+
+  .app-text { flex: 1; }
+
+  .app-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #002D72;
+    margin-bottom: 3px;
+  }
+
+  .app-desc {
+    font-size: 12px;
+    color: #7a96c2;
+  }
+
+  .app-arrow {
+    font-size: 18px;
+    color: #d0d9ec;
+    transition: color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+  }
+
+  .app-card:hover .app-arrow {
+    color: #FF5910;
+    transform: translateX(3px);
+  }
+
+  /* Coming soon card */
+  .app-card.soon {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 44px;
+    font-size: 11px;
+    color: #b0bedd;
+    letter-spacing: 0.08em;
+    text-align: center;
+    animation: floatIn 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .footer span { color: #FF5910; }
+
+  @keyframes floatIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 400px) {
+    .app-card { padding: 16px 16px; gap: 14px; }
+    .app-icon { width: 42px; height: 42px; font-size: 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Logo -->
+  <div class="logo-wrap">
+    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring -->
+      <circle cx="36" cy="36" r="34" stroke="#002D72" stroke-width="2.5" fill="white"/>
+      <!-- Orange arc top -->
+      <path d="M 14 22 Q 36 6 58 22" stroke="#FF5910" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+      <!-- DV monogram -->
+      <!-- D -->
+      <path d="M 18 26 L 18 46 L 24 46 Q 33 46 33 36 Q 33 26 24 26 Z" fill="#002D72"/>
+      <path d="M 21.5 29.5 L 24 29.5 Q 29 29.5 29 36 Q 29 42.5 24 42.5 L 21.5 42.5 Z" fill="white"/>
+      <!-- V -->
+      <path d="M 36 26 L 42 44 L 48 26" stroke="#FF5910" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Dot bottom -->
+      <circle cx="36" cy="57" r="3" fill="#FF5910"/>
+    </svg>
+  </div>
+
+  <!-- Name -->
+  <div class="name">Daniel <em>Vega</em></div>
+
+  <!-- Tagline -->
+  <div class="tagline">Claude Apps</div>
+
+  <!-- App Cards -->
+  <div class="apps">
+
+    <a class="app-card" href="curriculum.html">
+      <div class="app-icon icon-blue">🎓</div>
+      <div class="app-text">
+        <div class="app-name">AI Learning Plan</div>
+        <div class="app-desc">8-phase curriculum · progress tracker</div>
+      </div>
+      <div class="app-arrow">→</div>
+    </a>
+
+    <a class="app-card" href="meals.html">
+      <div class="app-icon icon-orange">🥗</div>
+      <div class="app-text">
+        <div class="app-name">Meal & Fitness Planner</div>
+        <div class="app-desc">Mediterranean diet · workout tracker</div>
+      </div>
+      <div class="app-arrow">→</div>
+    </a>
+
+    <div class="app-card soon">
+      <div class="app-icon icon-blue">⚾</div>
+      <div class="app-text">
+        <div class="app-name">Fantasy Baseball Draft</div>
+        <div class="app-desc">Coming soon · mobile optimization in progress</div>
+      </div>
+      <div class="app-arrow">→</div>
+    </div>
+
+  </div>
+
+  <div class="footer">Built with <span>Claude</span> · Daniel Vega © 2026</div>
+
+</div>
+</body>
+</html>
