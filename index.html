@@ -1,159 +1,888 @@
-Daniel Vega
-·
-Personal AI OS
-·
-V6 · APRIL 2026
-0 / 27 · 0%
-WEEK 1–2 · NOW
-Track A: Anthropic Academy
-Track B: Trailhead Agentblazer
-WEEK 3–8
-Track A: Google + HubSpot certs
-Track B: Salesforce Associate
-Track C: Harvard Future Proof
-WEEK 9–16
-Track D: Vibe Coding builds
-Track A: Portfolio packaging
-Southside Drops: next layer
-ONGOING · NORTH STAR
-Track E: Superapp iOS
-Track E: OpenClaw setup
-TRACK A
-Anthropic Academy + Core AI
-Start now · All free · Official certs
-0/9
-A · STEP 1
-IN PROGRESS
-Anthropic Academy — Your Certification Stack
-0/3
-▶
-Launched March 2, 2026. 13 free courses, official certs from the maker of Claude. Non-technical track is Claude 101 + AI Fluency. These are the highest-credibility free AI certs available right now — issued directly by Anthropic.
-Claude 101
-IN PROGRESS — complete this for the cert. You started it, hit a broken Google Sheets activity — skip that activity and push through to completion.
-FREE
-CERT
-IN PROGRESS
-NOTES
-	
-DATES
-STARTED
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daniel Vega · AI Learning Plan v6</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #002D72;
+  --navy-dk: #001845;
+  --navy-deep: #000e2b;
+  --orange: #FF5910;
+  --orange-dk: #cc4700;
+  --bg: #E8EDF7;
+  --surface: #FFFFFF;
+  --surf2: #EDF1FB;
+  --ink: #001025;
+  --ink2: #1a3060;
+  --ink3: #4a6090;
+  --line: #C8D4EC;
+  --done-bg: #ecf7ec;
+  --done-border: #7bc47b;
+  --done-check: #1e6e1e;
+  --ta: #002D72;
+  --tb: #b45309;
+  --tc: #15803d;
+  --td: #6d28d9;
+  --te: #FF5910;
+}
 
-FINISHED
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-AI Fluency: Framework & Foundations
-THE most important Anthropic cert for non-technical professionals. 4D AI Fluency framework, practical collaboration skills, official credential. Do this immediately after Claude 101.
-FREE
-CERT
-NEW
-NOTES
-	
-DATES
-STARTED
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+}
 
-FINISHED
+/* ══════════════════════════
+   HEADER
+══════════════════════════ */
+.hdr {
+  background: linear-gradient(140deg, var(--navy) 0%, var(--navy-deep) 70%);
+  border-bottom: 3px solid var(--orange);
+  padding: 11px 24px;
+}
+.hdr-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.hdr-left {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.hdr-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: #fff;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.hdr-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 26px;
+  color: var(--orange);
+  letter-spacing: 1.5px;
+  line-height: 1;
+}
+.hdr-sep { color: rgba(255,255,255,0.3); font-size: 18px; }
+.hdr-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+.gp-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 220px;
+}
+.gp-bar-bg {
+  flex: 1;
+  background: rgba(255,255,255,0.12);
+  border-radius: 4px;
+  height: 7px;
+  overflow: hidden;
+}
+.gp-bar-fill {
+  height: 100%;
+  background: var(--orange);
+  border-radius: 4px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+.gp-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  white-space: nowrap;
+}
 
-Introduction to Claude Cowork
-Newer addition covering product workflow tools. Relevant to consulting and job search work. Short and practical.
-FREE
-NEW
-NOTES
-	
-DATES
-STARTED
+/* ══════════════════════════
+   TIMELINE
+══════════════════════════ */
+.timeline {
+  background: var(--navy-dk);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 10px 24px;
+}
+.tl-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+.tl-col {
+  background: rgba(255,255,255,0.04);
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 8px 10px;
+}
+.tl-period {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 4px;
+}
+.tl-item {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  font-style: italic;
+  line-height: 1.4;
+}
 
-FINISHED
+/* ══════════════════════════
+   BOARD — vertical stack
+══════════════════════════ */
+.board {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
 
-A · STEP 2
-WEEK 3+
-Google AI + Marketing Certs
-0/6
-▶
-TRACK B
-Trailhead + Salesforce
-Trailhead is free · Associate exam $75
-0/6
-B · STEP 1
-IN PROGRESS
-Agentblazer Champion 2026
-0/4
-▶
-You completed Section 1 (AI Basics, ~1hr 20min). Four sections total. Section 2 is the next priority — "Explore Salesforce AI" covers Data 360, Prompt Builder, and the Trust Layer. The meaty Salesforce-specific content.
-✅ Section 1: Get Started with AI Basics
-COMPLETED — Becoming an Agentblazer, AI Fundamentals, Generative AI, NLP, LLMs, Ethical AI. Strong foundation.
-FREE
-DONE
-NOTES
-	
-DATES
-STARTED
+/* ══════════════════════════
+   TRACK HEADER BAR
+══════════════════════════ */
+.track-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  color: #fff;
+  margin-top: 24px;
+  border-radius: 10px 10px 0 0;
+}
+.track-header:first-child { margin-top: 0; }
+.track-header.ta { background: var(--ta); }
+.track-header.tb { background: var(--tb); }
+.track-header.tc { background: var(--tc); }
+.track-header.td { background: var(--td); }
+.track-header.te { background: var(--te); }
 
-FINISHED
+.track-left {}
+.track-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 2px;
+}
+.track-name {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+.track-meta {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  font-style: italic;
+  margin-top: 2px;
+}
+.track-prog {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: rgba(255,255,255,0.75);
+  white-space: nowrap;
+}
 
-Section 2: Explore Salesforce AI (~3hrs)
-Data Fundamentals for AI, Data + AI + CRM Quick Look, Prompt Fundamentals, Prompt Builder Basics, Einstein Trust Layer, Autonomous Agents, Reasoning in AI.
-FREE
-NOTES
-	
-DATES
-STARTED
+/* ══════════════════════════
+   PHASE / STEP CARD
+══════════════════════════ */
+.phase {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: none;
+  overflow: hidden;
+}
+.phase:last-of-type {
+  border-radius: 0 0 10px 10px;
+  margin-bottom: 4px;
+}
 
-FINISHED
+.phase-hdr {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--surf2);
+  border-bottom: 1px solid var(--line);
+  transition: background 0.15s;
+}
+.phase-hdr:hover { background: #dce5f5; }
 
-Section 3: Meet Agentforce (~1hr 40min)
-Introduction to Agentforce, Agentforce Basics, Builder Basics, for Service, for Sales, Mobile. The practical product knowledge.
-FREE
-NOTES
-	
-DATES
-STARTED
+.step-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.95);
+  border-radius: 4px;
+  padding: 3px 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.step-num.ta { background: var(--ta); }
+.step-num.tb { background: var(--tb); }
+.step-num.tc { background: var(--tc); }
+.step-num.td { background: var(--td); }
+.step-num.te { background: var(--te); }
 
-FINISHED
+.phase-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 9px;
+  border-radius: 20px;
+  flex-shrink: 0;
+}
+.pb-now   { background: rgba(255,89,16,0.12); color: #b83400; border: 1px solid rgba(255,89,16,0.35); }
+.pb-prog  { background: rgba(0,45,114,0.09); color: #002D72; border: 1px solid rgba(0,45,114,0.25); }
+.pb-later { background: rgba(74,96,144,0.1); color: #2a4070; border: 1px solid rgba(74,96,144,0.25); }
+.pb-build { background: rgba(109,40,217,0.09); color: #5b1db8; border: 1px solid rgba(109,40,217,0.25); }
+.pb-dest  { background: rgba(255,89,16,0.1); color: #b83400; border: 1px solid rgba(255,89,16,0.28); }
 
-Section 4: Get Hands On (~1hr)
-Build a Service Agent, Use Employee Agents. The hands-on builds that earn the Champion badge.
-FREE
-NOTES
-	
-DATES
-STARTED
+.phase-title {
+  flex: 1;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.phase-prog {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--ink3);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.phase-prog.all { color: var(--done-check); font-weight: 700; }
 
-FINISHED
+.chevron {
+  font-size: 11px;
+  color: var(--ink3);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+.phase.open .chevron { transform: rotate(90deg); }
 
-B · STEP 2
-WEEK 5+
-Salesforce Associate Certification
-0/2
-▶
-TRACK C
-Harvard Future Proof with AI
-$279 flat · Badges as you go · D³ path · Enrolled
-0/2
-C · STEP 1
-WEEK 3+
-Harvard Future Proof — D³ Path
-0/2
-▶
-TRACK D
-Vibe Coding + Builds
-Week 9+ · Base44 and Bolt are your tools
-0/8
-D · STEP 1
-WEEK 9+
-Vibe Coding — Build Anything
-0/6
-▶
-D · STEP 2
-WEEK 9+
-HTML → Native iPhone Apps
-0/2
-▶
-TRACK E
-North Star — OpenClaw
-Ongoing · Requires terminal comfort first
-0/2
-E · STEP 1
-DESTINATION
-OpenClaw — Personal AI Assistant
-0/2
-▶
-METS COLORS · BUILT DIFFERENT · GO GET IT, DANIEL 🔵🟠
+.phase-body { display: none; }
+.phase.open .phase-body { display: block; }
+
+.phase-note {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.65;
+  padding: 14px 20px;
+  background: rgba(0,45,114,0.03);
+  border-left: 3px solid var(--orange);
+  font-style: italic;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ══════════════════════════
+   COURSE ROW
+   3-column: [checkbox+name+tags] [notes] [dates]
+══════════════════════════ */
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.course-table tr {
+  border-bottom: 1px solid rgba(200,212,236,0.5);
+  transition: background 0.12s;
+}
+.course-table tr:last-child { border-bottom: none; }
+.course-table tr.done-row { background: var(--done-bg); }
+
+/* col 1 — course info */
+.col-course {
+  padding: 14px 16px 14px 20px;
+  vertical-align: top;
+  width: 42%;
+}
+.item-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.item-cb {
+  width: 20px; height: 20px;
+  border: 2px solid var(--line);
+  border-radius: 4px;
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s;
+  background: #fff;
+}
+.item-cb:hover { border-color: var(--orange); }
+.item-cb.on { background: var(--done-check); border-color: var(--done-check); }
+.item-cb.on::after { content: '✓'; font-size: 12px; color: #fff; font-weight: 700; }
+
+.item-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+.item-name a {
+  color: var(--navy);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0,45,114,0.22);
+}
+.item-name a:hover { color: var(--orange); border-color: var(--orange); }
+.done-row .item-name,
+.done-row .item-name a { color: var(--ink3); text-decoration: line-through; }
+
+.item-why {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.6;
+  margin-bottom: 6px;
+  padding-left: 30px;
+}
+.done-row .item-why { color: var(--ink3); }
+
+.item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding-left: 30px;
+}
+.tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.2px;
+}
+.tag.free     { background: #f0fdf4; color: #14532d; border: 1px solid #86efac; }
+.tag.cert     { background: #fff4ef; color: #9a2d00; border: 1px solid #fdba74; }
+.tag.paid     { background: #fdf4ff; color: #581c87; border: 1px solid #d8b4fe; }
+.tag.new      { background: #ecfdf5; color: #064e3b; border: 1px solid #6ee7b7; font-weight: 700; }
+.tag.project  { background: #eff6ff; color: #1e3a8a; border: 1px solid #93c5fd; }
+.tag.skip     { background: #f9fafb; color: #6b7280; border: 1px solid #d1d5db; text-decoration: line-through; }
+.tag.prestige { background: #fefce8; color: #78350f; border: 1px solid #fcd34d; }
+.tag.inprog   { background: rgba(0,45,114,0.07); color: #001f5b; border: 1px solid rgba(0,45,114,0.22); }
+.tag.done     { background: var(--done-bg); color: var(--done-check); border: 1px solid var(--done-border); }
+
+/* col 2 — notes */
+.col-notes {
+  padding: 14px 12px;
+  vertical-align: top;
+  width: 35%;
+  border-left: 1px solid var(--line);
+}
+.col-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 6px;
+}
+.notes-input {
+  width: 100%;
+  min-height: 68px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  color: var(--ink);
+  line-height: 1.5;
+  resize: vertical;
+  background: #fafbff;
+  transition: border-color 0.15s;
+}
+.notes-input:focus {
+  outline: none;
+  border-color: var(--navy);
+  background: #fff;
+}
+.notes-input::placeholder { color: #9aabbf; font-style: italic; }
+
+/* col 3 — dates */
+.col-dates {
+  padding: 14px 16px 14px 12px;
+  vertical-align: top;
+  width: 23%;
+  border-left: 1px solid var(--line);
+}
+.dates-row {
+  display: flex;
+  gap: 10px;
+}
+.date-field { flex: 1; }
+.date-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink3);
+  margin-bottom: 4px;
+}
+.date-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  color: var(--ink);
+  background: #fafbff;
+  transition: border-color 0.15s;
+  cursor: pointer;
+}
+.date-input:focus {
+  outline: none;
+  border-color: var(--navy);
+  background: #fff;
+}
+
+/* ══════════════════════════
+   FOOTER
+══════════════════════════ */
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: rgba(0,20,51,0.22);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .tl-inner { grid-template-columns: 1fr 1fr; }
+  .course-table, .course-table tbody,
+  .course-table tr, .course-table td { display: block; width: 100%; }
+  .col-course, .col-notes, .col-dates {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding: 10px 16px;
+  }
+  .col-course { border-top: none; }
+}
+@media (max-width: 420px) {
+  .hdr-inner { flex-direction: column; align-items: flex-start; }
+  .gp-wrap { width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-left">
+      <span class="hdr-name">Daniel Vega</span>
+      <span class="hdr-sep">·</span>
+      <span class="hdr-title">Personal AI OS</span>
+      <span class="hdr-sep">·</span>
+      <span class="hdr-meta">v6 · April 2026</span>
+    </div>
+    <div class="gp-wrap">
+      <div class="gp-bar-bg"><div class="gp-bar-fill" id="gpFill"></div></div>
+      <span class="gp-label" id="gpLabel">0 / 0</span>
+    </div>
+  </div>
+</div>
+
+<!-- TIMELINE -->
+<div class="timeline">
+  <div class="tl-inner">
+    <div class="tl-col">
+      <div class="tl-period">Week 1–2 · Now</div>
+      <div class="tl-item">Track A: Anthropic Academy</div>
+      <div class="tl-item">Track B: Trailhead Agentblazer</div>
+    </div>
+    <div class="tl-col">
+      <div class="tl-period">Week 3–8</div>
+      <div class="tl-item">Track A: Google + HubSpot certs</div>
+      <div class="tl-item">Track B: Salesforce Associate</div>
+      <div class="tl-item">Track C: Harvard Future Proof</div>
+    </div>
+    <div class="tl-col">
+      <div class="tl-period">Week 9–16</div>
+      <div class="tl-item">Track D: Vibe Coding builds</div>
+      <div class="tl-item">Track A: Portfolio packaging</div>
+      <div class="tl-item">Southside Drops: next layer</div>
+    </div>
+    <div class="tl-col">
+      <div class="tl-period">Ongoing · North Star</div>
+      <div class="tl-item">Track E: Superapp iOS</div>
+      <div class="tl-item">Track E: OpenClaw setup</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOARD -->
+<div class="board" id="board"></div>
+
+<div class="footer">Mets colors · Built different · Go get it, Daniel 🔵🟠</div>
+
+<script>
+const LS_KEY = 'ai_plan_v6';
+function load() { try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch { return {}; } }
+function save(s) { try { localStorage.setItem(LS_KEY, JSON.stringify(s)); } catch {} }
+let S = load();
+
+// flatten all tracks into a single ordered array for vertical rendering
+const TRACKS = [
+  {
+    id: 'ta', color: 'ta',
+    badge: 'TRACK A',
+    name: 'Anthropic Academy + Core AI',
+    meta: 'Start now · All free · Official certs',
+    phases: [
+      {
+        id: 'A1', stepLabel: 'A · STEP 1', badgeCls: 'pb-now', badgeText: 'IN PROGRESS',
+        title: 'Anthropic Academy — Your Certification Stack',
+        note: 'Launched March 2, 2026. 13 free courses, official certs from the maker of Claude. Non-technical track is Claude 101 + AI Fluency. These are the highest-credibility free AI certs available right now — issued directly by Anthropic.',
+        items: [
+          { name: 'Claude 101', url: 'https://anthropic.com/courses', tags: ['free','cert','inprog'],
+            why: 'IN PROGRESS — complete this for the cert. You started it, hit a broken Google Sheets activity — skip that activity and push through to completion.' },
+          { name: 'AI Fluency: Framework & Foundations', url: 'https://anthropic.com/courses', tags: ['free','cert','new'],
+            why: 'THE most important Anthropic cert for non-technical professionals. 4D AI Fluency framework, practical collaboration skills, official credential. Do this immediately after Claude 101.' },
+          { name: 'Introduction to Claude Cowork', url: 'https://anthropic.com/courses', tags: ['free','new'],
+            why: 'Newer addition covering product workflow tools. Relevant to consulting and job search work. Short and practical.' },
+        ]
+      },
+      {
+        id: 'A2', stepLabel: 'A · STEP 2', badgeCls: 'pb-prog', badgeText: 'WEEK 3+',
+        title: 'Google AI + Marketing Certs',
+        note: 'Google certs carry real weight with recruiters at tech companies (Pinterest, Salesforce, HH Global/Google). Do Skillshop GA4 first — it\'s the most frequently listed requirement in job postings.',
+        items: [
+          { name: 'Google Digital Garage — Fundamentals of Digital Marketing', url: 'https://learndigital.withgoogle.com/', tags: ['free','cert'],
+            why: 'IAB-accredited, free, ~40hrs. The most recognized free digital marketing cert. Covers SEO, SEM, social, analytics. Shows up on hiring manager screens.' },
+          { name: 'Google Skillshop — Google Analytics 4', url: 'https://skillshop.docebosaas.com/', tags: ['free','cert'],
+            why: 'GA4 is the single most frequently listed technical requirement in marketing job postings right now. Short, free, and immediately relevant.' },
+          { name: 'Google AI Essentials — Coursera', url: 'https://www.coursera.org/learn/google-ai-essentials', tags: ['paid','cert'],
+            why: 'Google-badged credential on LinkedIn — instantly recognizable to tech-adjacent recruiters. Worth the $49.' },
+          { name: 'HubSpot Social Media Marketing Certification', url: 'https://academy.hubspot.com/', tags: ['free','cert'],
+            why: 'HubSpot certs are widely recognized in marketing hiring. Free, reputable, adds to the LinkedIn cert stack.' },
+          { name: '⛔ SKIP: Harvard CS50 AI with Python', tags: ['skip'],
+            why: 'Requires Python prereqs you don\'t have yet. Save for after 3–4 months of vibe coding.' },
+          { name: '⛔ SKIP: Harvard CS50 with Scratch', tags: ['skip'],
+            why: 'Children\'s programming language. Not a meaningful credential at your level.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'tb', color: 'tb',
+    badge: 'TRACK B',
+    name: 'Trailhead + Salesforce',
+    meta: 'Trailhead is free · Associate exam $75',
+    phases: [
+      {
+        id: 'B1', stepLabel: 'B · STEP 1', badgeCls: 'pb-prog', badgeText: 'IN PROGRESS',
+        title: 'Agentblazer Champion 2026',
+        note: 'You completed Section 1 (AI Basics, ~1hr 20min). Four sections total. Section 2 is the next priority — "Explore Salesforce AI" covers Data 360, Prompt Builder, and the Trust Layer. The meaty Salesforce-specific content.',
+        items: [
+          { name: '✅ Section 1: Get Started with AI Basics', tags: ['free','done'],
+            why: 'COMPLETED — Becoming an Agentblazer, AI Fundamentals, Generative AI, NLP, LLMs, Ethical AI. Strong foundation.' },
+          { name: 'Section 2: Explore Salesforce AI (~3hrs)', tags: ['free'],
+            why: 'Data Fundamentals for AI, Data + AI + CRM Quick Look, Prompt Fundamentals, Prompt Builder Basics, Einstein Trust Layer, Autonomous Agents, Reasoning in AI.' },
+          { name: 'Section 3: Meet Agentforce (~1hr 40min)', tags: ['free'],
+            why: 'Introduction to Agentforce, Agentforce Basics, Builder Basics, for Service, for Sales, Mobile. The practical product knowledge.' },
+          { name: 'Section 4: Get Hands On (~1hr)', tags: ['free'],
+            why: 'Build a Service Agent, Use Employee Agents. The hands-on builds that earn the Champion badge.' },
+        ]
+      },
+      {
+        id: 'B2', stepLabel: 'B · STEP 2', badgeCls: 'pb-later', badgeText: 'WEEK 5+',
+        title: 'Salesforce Associate Certification',
+        note: 'The Associate cert is entry-level but highly valued as proof of Salesforce fluency, especially for roles that list Salesforce as a requirement. Study through Trailhead, then sit the exam.',
+        items: [
+          { name: 'Salesforce Associate Trailmix (study path)', url: 'https://trailhead.salesforce.com/', tags: ['free'],
+            why: 'The official free study path. Complete before scheduling the exam.' },
+          { name: 'Salesforce Certified Associate Exam', url: 'https://trailhead.salesforce.com/credentials/associate', tags: ['paid'],
+            why: '$75 exam. Entry-level cert with real recruiter recognition. Justifies adding Salesforce to your LinkedIn skills.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'tc', color: 'tc',
+    badge: 'TRACK C',
+    name: 'Harvard Future Proof with AI',
+    meta: '$279 flat · Badges as you go · D³ path · Enrolled',
+    phases: [
+      {
+        id: 'C1', stepLabel: 'C · STEP 1', badgeCls: 'pb-prog', badgeText: 'WEEK 3+',
+        title: 'Harvard Future Proof — D³ Path',
+        note: 'Enrolled. $279 flat fee unlocks the full program — certificates, badges, the works. The D³ path (Discover, Develop, Deploy) is the recommended sequence for non-technical learners. This is your prestige credential — Harvard name on LinkedIn is a different tier.',
+        items: [
+          { name: 'Harvard Future Proof with AI — D³ Path', url: 'https://www.harvardonline.harvard.edu/', tags: ['prestige','paid'],
+            why: 'Enrolled. Your most prestigious cert. Harvard brand recognition signals to senior executives and mission-driven org hiring managers in a way other certs don\'t.' },
+          { name: 'Wharton AI For Business (bonus)', url: 'https://www.coursera.org/', tags: ['prestige'],
+            why: 'Optional but high-value pairing with Harvard. Two Ivy-tier AI credentials on the profile is a differentiator.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'td', color: 'td',
+    badge: 'TRACK D',
+    name: 'Vibe Coding + Builds',
+    meta: 'Week 9+ · Base44 and Bolt are your tools',
+    phases: [
+      {
+        id: 'D1', stepLabel: 'D · STEP 1', badgeCls: 'pb-build', badgeText: 'WEEK 9+',
+        title: 'Vibe Coding — Build Anything',
+        note: 'This is where the skills become visible work. Build tools and portfolio pieces using plain-English-to-app tools. Primary tools: Base44 (best for apps with backend logic), Bolt.new (fastest prototyping). Netlify/GitHub Pages for hosting.',
+        items: [
+          { name: 'Base44 — AI App Builder', url: 'https://base44.com', tags: ['free','new'],
+            why: 'The most powerful plain-English-to-working-app builder right now. Handles backend logic, auth, databases. Your primary vibe coding tool.' },
+          { name: 'Bolt.new — Frontend Prototyping', url: 'https://bolt.new', tags: ['free'],
+            why: 'Fastest path from idea to working UI. Best for marketing tools, dashboards, campaign generators. 5 free projects/month.' },
+          { name: '🏗 BUILD: Sponsorship Proposal Generator', tags: ['project'],
+            why: 'AI-powered tool: brand name + event type → formatted sponsorship proposal. Your most relevant portfolio piece for partnerships roles.' },
+          { name: '🏗 BUILD: Cause Marketing Campaign Brief Automator', tags: ['project'],
+            why: 'Input org mission + audience + budget → complete campaign brief. Directly demonstrates your T-Mobile Cause Marketing expertise in tool form.' },
+          { name: '🏗 BUILD: Southside Drops Consulting Deck', tags: ['project'],
+            why: 'Convert the Murakami concept into a consulting proof-of-concept — raw idea → viable business plan using AI as a strategic thought partner.' },
+          { name: 'Hire Human — Free AI 101 Course', url: 'https://hirehuman.com', tags: ['free','new'],
+            why: 'Free, practical AI agent building course. Gets you comfortable with the agent layer without needing Python.' },
+        ]
+      },
+      {
+        id: 'D2', stepLabel: 'D · STEP 2', badgeCls: 'pb-build', badgeText: 'WEEK 9+',
+        title: 'HTML → Native iPhone Apps',
+        note: 'You\'ve already built My Plan and the Learning Plan as web apps. Superapp converts plain English and existing HTML into native Swift apps you can submit to the App Store. No Xcode needed.',
+        items: [
+          { name: 'Superapp — AI iOS App Builder', url: 'https://www.superappp.com', tags: ['paid','new'],
+            why: 'Plain English → production-ready native Swift → App Store. Start by converting My Plan (meals.html). Then this learning plan. Then new builds.' },
+          { name: '🏗 BUILD: My Plan → Native iPhone App', tags: ['project'],
+            why: 'Your meal planning, weight tracker, inventory app — already built as HTML. Convert to native iOS. First real App Store candidate.' },
+        ]
+      },
+    ]
+  },
+  {
+    id: 'te', color: 'te',
+    badge: 'TRACK E',
+    name: 'North Star — OpenClaw',
+    meta: 'Ongoing · Requires terminal comfort first',
+    phases: [
+      {
+        id: 'E1', stepLabel: 'E · STEP 1', badgeCls: 'pb-dest', badgeText: 'DESTINATION',
+        title: 'OpenClaw — Personal AI Assistant',
+        note: 'The long game. OpenClaw is your self-hosted personal AI concierge — a custom Claude-powered assistant that knows your context, runs locally, and works across your devices. Getting here requires terminal comfort (comes from Track D). This is the North Star.',
+        items: [
+          { name: 'OpenClaw Setup', url: 'https://openclaw.ai', tags: ['free','new'],
+            why: 'Self-hosted personal AI assistant. Requires basic terminal comfort. Start after you\'ve done 3–4 vibe coding builds and are comfortable with command line.' },
+          { name: 'Terminal Basics (prerequisite)', tags: ['free'],
+            why: 'Before OpenClaw, get comfortable with basic terminal commands. You\'ll pick this up naturally through vibe coding builds — it\'s not a separate course.' },
+        ]
+      },
+    ]
+  },
+];
+
+// ── RENDER ──
+function renderAll() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+
+  TRACKS.forEach(track => {
+    // Track header
+    const thdr = document.createElement('div');
+    thdr.className = `track-header ${track.color}`;
+    const tTotal = track.phases.flatMap(p => p.items).length;
+    const tDone  = track.phases.flatMap(p => p.items.filter((_,i) => S[`${p.id}-${i}`])).length;
+    thdr.innerHTML = `
+      <div class="track-left">
+        <div class="track-badge">${track.badge}</div>
+        <div class="track-name">${track.name}</div>
+        <div class="track-meta">${track.meta}</div>
+      </div>
+      <div class="track-prog" id="tp-${track.id}">${tDone}/${tTotal}</div>`;
+    board.appendChild(thdr);
+
+    // Phases
+    track.phases.forEach((ph, phIdx) => {
+      const doneCount = ph.items.filter((_,i) => S[`${ph.id}-${i}`]).length;
+      const isLast = phIdx === track.phases.length - 1;
+      const phEl = document.createElement('div');
+      phEl.className = 'phase' + (ph.id === 'A1' || ph.id === 'B1' ? ' open' : '') + (isLast ? ' last' : '');
+      phEl.id = 'phase-' + ph.id;
+
+      // Phase header
+      const phHdr = document.createElement('div');
+      phHdr.className = 'phase-hdr';
+      phHdr.onclick = () => phEl.classList.toggle('open');
+      phHdr.innerHTML = `
+        <span class="step-num ${track.color}">${ph.stepLabel}</span>
+        <span class="phase-badge ${ph.badgeCls}">${ph.badgeText}</span>
+        <span class="phase-title">${ph.title}</span>
+        <span class="phase-prog${doneCount===ph.items.length?' all':''}" id="pp-${ph.id}">${doneCount}/${ph.items.length}</span>
+        <span class="chevron">▶</span>`;
+
+      // Phase body
+      const phBody = document.createElement('div');
+      phBody.className = 'phase-body';
+
+      if (ph.note) {
+        const noteEl = document.createElement('div');
+        noteEl.className = 'phase-note';
+        noteEl.textContent = ph.note;
+        phBody.appendChild(noteEl);
+      }
+
+      // Course table
+      const tbl = document.createElement('table');
+      tbl.className = 'course-table';
+
+      ph.items.forEach((item, i) => {
+        const key      = `${ph.id}-${i}`;
+        const noteKey  = `${key}_note`;
+        const startKey = `${key}_start`;
+        const endKey   = `${key}_end`;
+        const isDone   = !!S[key];
+
+        const tr = document.createElement('tr');
+        tr.id = `row-${key}`;
+        if (isDone) tr.classList.add('done-row');
+
+        // ── COL 1: course ──
+        const tdCourse = document.createElement('td');
+        tdCourse.className = 'col-course';
+
+        const cb = document.createElement('div');
+        cb.className = 'item-cb' + (isDone ? ' on' : '');
+        cb.onclick = () => {
+          S[key] = !S[key];
+          cb.classList.toggle('on', S[key]);
+          tr.classList.toggle('done-row', S[key]);
+          save(S);
+          updateProgress();
+        };
+
+        const nameHtml = item.url
+          ? `<a href="${item.url}" target="_blank" rel="noopener">${item.name}</a>`
+          : item.name;
+        const tagsHtml = (item.tags||[]).map(t =>
+          `<span class="tag ${t}">${t==='inprog'?'IN PROGRESS':t==='prestige'?'PRESTIGE':t.toUpperCase()}</span>`
+        ).join('');
+
+        tdCourse.innerHTML = `
+          <div class="item-top">
+            <div class="item-name">${nameHtml}</div>
+          </div>
+          ${item.why ? `<div class="item-why">${item.why}</div>` : ''}
+          ${tagsHtml ? `<div class="item-tags">${tagsHtml}</div>` : ''}`;
+
+        // insert checkbox before name
+        tdCourse.querySelector('.item-top').prepend(cb);
+
+        // ── COL 2: notes ──
+        const tdNotes = document.createElement('td');
+        tdNotes.className = 'col-notes';
+        const textarea = document.createElement('textarea');
+        textarea.className = 'notes-input';
+        textarea.placeholder = 'Add notes, links, key takeaways...';
+        textarea.value = S[noteKey] || '';
+        textarea.oninput = () => { S[noteKey] = textarea.value; save(S); };
+        tdNotes.innerHTML = '<div class="col-label">Notes</div>';
+        tdNotes.appendChild(textarea);
+
+        // ── COL 3: dates ──
+        const tdDates = document.createElement('td');
+        tdDates.className = 'col-dates';
+
+        const startInput = document.createElement('input');
+        startInput.type = 'date';
+        startInput.className = 'date-input';
+        startInput.value = S[startKey] || '';
+        startInput.onchange = () => { S[startKey] = startInput.value; save(S); };
+
+        const endInput = document.createElement('input');
+        endInput.type = 'date';
+        endInput.className = 'date-input';
+        endInput.value = S[endKey] || '';
+        endInput.onchange = () => { S[endKey] = endInput.value; save(S); };
+
+        tdDates.innerHTML = `
+          <div class="col-label">Dates</div>
+          <div class="dates-row">
+            <div class="date-field"><div class="date-label">Started</div></div>
+            <div class="date-field"><div class="date-label">Finished</div></div>
+          </div>`;
+        tdDates.querySelectorAll('.date-field')[0].appendChild(startInput);
+        tdDates.querySelectorAll('.date-field')[1].appendChild(endInput);
+
+        tr.appendChild(tdCourse);
+        tr.appendChild(tdNotes);
+        tr.appendChild(tdDates);
+        tbl.appendChild(tr);
+      });
+
+      phBody.appendChild(tbl);
+      phEl.appendChild(phHdr);
+      phEl.appendChild(phBody);
+      board.appendChild(phEl);
+    });
+  });
+
+  updateProgress();
+}
+
+function updateProgress() {
+  let total = 0, done = 0;
+
+  TRACKS.forEach(track => {
+    let tTotal = 0, tDone = 0;
+    track.phases.forEach(ph => {
+      ph.items.forEach((_, i) => {
+        total++; tTotal++;
+        if (S[`${ph.id}-${i}`]) { done++; tDone++; }
+      });
+      const ppEl = document.getElementById('pp-' + ph.id);
+      if (ppEl) {
+        const pd = ph.items.filter((_,i) => S[`${ph.id}-${i}`]).length;
+        ppEl.textContent = `${pd}/${ph.items.length}`;
+        ppEl.className = 'phase-prog' + (pd === ph.items.length ? ' all' : '');
+      }
+    });
+    const tpEl = document.getElementById('tp-' + track.id);
+    if (tpEl) tpEl.textContent = `${tDone}/${tTotal}`;
+  });
+
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('gpFill').style.width = pct + '%';
+  document.getElementById('gpLabel').textContent = `${done} / ${total} · ${pct}%`;
+}
+
+renderAll();
+</script>
+</body>
+</html>
