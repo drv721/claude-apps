@@ -1,242 +1,152 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daniel Vega — Claude Apps</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+Daniel Vega
+·
+Personal AI OS
+·
+V6 · APRIL 2026
+0 / 27 · 0%
+WEEK 1–2 · NOW
+Track A: Anthropic Academy
+Track B: Trailhead Agentblazer
+WEEK 3–8
+Track A: Google + HubSpot certs
+Track B: Salesforce Associate
+Track C: Harvard Future Proof
+WEEK 9–16
+Track D: Vibe Coding builds
+Track A: Portfolio packaging
+Southside Drops: next layer
+ONGOING · NORTH STAR
+Track E: Superapp iOS
+Track E: OpenClaw setup
+TRACK A
+Anthropic Academy + Core AI
+Start now · All free · Official certs
+0/9
+A · STEP 1
+IN PROGRESS
+Anthropic Academy — Your Certification Stack
+0/3
+▶
+Launched March 2, 2026. 13 free courses, official certs from the maker of Claude. Non-technical track is Claude 101 + AI Fluency. These are the highest-credibility free AI certs available right now — issued directly by Anthropic.
+Claude 101
+IN PROGRESS — complete this for the cert. You started it, hit a broken Google Sheets activity — skip that activity and push through to completion.
+FREE
+CERT
+IN PROGRESS
+NOTES
+	
+STARTED
 
-  body {
-    background: #ffffff;
-    color: #002D72;
-    font-family: 'DM Sans', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 24px;
-  }
+FINISHED
 
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(0,45,114,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,45,114,0.04) 1px, transparent 1px);
-    background-size: 40px 40px;
-    pointer-events: none;
-    z-index: 0;
-  }
+AI Fluency: Framework & Foundations
+THE most important Anthropic cert for non-technical professionals. 4D AI Fluency framework, practical collaboration skills, official credential. Do this immediately after Claude 101.
+FREE
+CERT
+NEW
+NOTES
+	
+STARTED
 
-  .container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 480px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-  }
+FINISHED
 
-  /* Logo */
-  .logo-wrap {
-    margin-bottom: 28px;
-    animation: floatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+Introduction to Claude Cowork
+Newer addition covering product workflow tools. Relevant to consulting and job search work. Short and practical.
+FREE
+NEW
+NOTES
+	
+STARTED
 
-  /* Name */
-  .name {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 8vw, 52px);
-    font-weight: 400;
-    color: #002D72;
-    line-height: 1;
-    text-align: center;
-    animation: floatIn 0.8s 0.1s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+FINISHED
 
-  .name em {
-    font-style: italic;
-    color: #FF5910;
-  }
+A · STEP 2
+WEEK 3+
+Google AI + Marketing Certs
+0/6
+▶
+TRACK B
+Trailhead + Salesforce
+Trailhead is free · Associate exam $75
+0/6
+B · STEP 1
+IN PROGRESS
+Agentblazer Champion 2026
+0/4
+▶
+You completed Section 1 (AI Basics, ~1hr 20min). Four sections total. Section 2 is the next priority — "Explore Salesforce AI" covers Data 360, Prompt Builder, and the Trust Layer. The meaty Salesforce-specific content.
+✅ Section 1: Get Started with AI Basics
+COMPLETED — Becoming an Agentblazer, AI Fundamentals, Generative AI, NLP, LLMs, Ethical AI. Strong foundation.
+FREE
+DONE
+NOTES
+	
+STARTED
 
-  /* Tagline */
-  .tagline {
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: #FF5910;
-    margin-top: 10px;
-    margin-bottom: 44px;
-    text-align: center;
-    animation: floatIn 0.8s 0.2s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+FINISHED
 
-  /* App cards */
-  .apps {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    animation: floatIn 0.8s 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
+Section 2: Explore Salesforce AI (~3hrs)
+Data Fundamentals for AI, Data + AI + CRM Quick Look, Prompt Fundamentals, Prompt Builder Basics, Einstein Trust Layer, Autonomous Agents, Reasoning in AI.
+FREE
+NOTES
+	
+STARTED
 
-  .app-card {
-    display: flex;
-    align-items: center;
-    gap: 18px;
-    padding: 20px 22px;
-    background: #ffffff;
-    border: 1px solid #d0d9ec;
-    border-radius: 16px;
-    text-decoration: none;
-    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
-  }
+FINISHED
 
-  .app-card:hover {
-    border-color: #FF5910;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(255,89,16,0.12);
-  }
+Section 3: Meet Agentforce (~1hr 40min)
+Introduction to Agentforce, Agentforce Basics, Builder Basics, for Service, for Sales, Mobile. The practical product knowledge.
+FREE
+NOTES
+	
+STARTED
 
-  .app-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 22px;
-  }
+FINISHED
 
-  .icon-blue { background: rgba(0,45,114,0.08); }
-  .icon-orange { background: rgba(255,89,16,0.09); }
+Section 4: Get Hands On (~1hr)
+Build a Service Agent, Use Employee Agents. The hands-on builds that earn the Champion badge.
+FREE
+NOTES
+	
+STARTED
 
-  .app-text { flex: 1; }
+FINISHED
 
-  .app-name {
-    font-size: 15px;
-    font-weight: 500;
-    color: #002D72;
-    margin-bottom: 3px;
-  }
-
-  .app-desc {
-    font-size: 12px;
-    color: #7a96c2;
-  }
-
-  .app-arrow {
-    font-size: 18px;
-    color: #d0d9ec;
-    transition: color 0.2s, transform 0.2s;
-    flex-shrink: 0;
-  }
-
-  .app-card:hover .app-arrow {
-    color: #FF5910;
-    transform: translateX(3px);
-  }
-
-  /* Coming soon card */
-  .app-card.soon {
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
-  }
-
-  /* Footer */
-  .footer {
-    margin-top: 44px;
-    font-size: 11px;
-    color: #b0bedd;
-    letter-spacing: 0.08em;
-    text-align: center;
-    animation: floatIn 0.8s 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-  }
-
-  .footer span { color: #FF5910; }
-
-  @keyframes floatIn {
-    from { opacity: 0; transform: translateY(16px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  @media (max-width: 400px) {
-    .app-card { padding: 16px 16px; gap: 14px; }
-    .app-icon { width: 42px; height: 42px; font-size: 20px; }
-  }
-</style>
-</head>
-<body>
-<div class="container">
-
-  <!-- Logo -->
-  <div class="logo-wrap">
-    <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- Outer ring -->
-      <circle cx="36" cy="36" r="34" stroke="#002D72" stroke-width="2.5" fill="white"/>
-      <!-- Orange arc top -->
-      <path d="M 14 22 Q 36 6 58 22" stroke="#FF5910" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-      <!-- DV monogram -->
-      <!-- D -->
-      <path d="M 18 26 L 18 46 L 24 46 Q 33 46 33 36 Q 33 26 24 26 Z" fill="#002D72"/>
-      <path d="M 21.5 29.5 L 24 29.5 Q 29 29.5 29 36 Q 29 42.5 24 42.5 L 21.5 42.5 Z" fill="white"/>
-      <!-- V -->
-      <path d="M 36 26 L 42 44 L 48 26" stroke="#FF5910" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-      <!-- Dot bottom -->
-      <circle cx="36" cy="57" r="3" fill="#FF5910"/>
-    </svg>
-  </div>
-
-  <!-- Name -->
-  <div class="name">Daniel <em>Vega</em></div>
-
-  <!-- Tagline -->
-  <div class="tagline">Claude Apps</div>
-
-  <!-- App Cards -->
-  <div class="apps">
-
-    <a class="app-card" href="curriculum.html">
-      <div class="app-icon icon-blue">🎓</div>
-      <div class="app-text">
-        <div class="app-name">AI Learning Plan</div>
-        <div class="app-desc">8-phase curriculum · progress tracker</div>
-      </div>
-      <div class="app-arrow">→</div>
-    </a>
-
-    <a class="app-card" href="meals.html">
-      <div class="app-icon icon-orange">🥗</div>
-      <div class="app-text">
-        <div class="app-name">Meal & Fitness Planner</div>
-        <div class="app-desc">Mediterranean diet · workout tracker</div>
-      </div>
-      <div class="app-arrow">→</div>
-    </a>
-
-    <div class="app-card soon">
-      <div class="app-icon icon-blue">⚾</div>
-      <div class="app-text">
-        <div class="app-name">Fantasy Baseball Draft</div>
-        <div class="app-desc">Coming soon · mobile optimization in progress</div>
-      </div>
-      <div class="app-arrow">→</div>
-    </div>
-
-  </div>
-
-  <div class="footer">Built with <span>Claude</span> · Daniel Vega © 2026</div>
-
-</div>
-</body>
-</html>
+B · STEP 2
+WEEK 5+
+Salesforce Associate Certification
+0/2
+▶
+TRACK C
+Harvard Future Proof with AI
+$279 flat · Badges as you go · D³ path · Enrolled
+0/2
+C · STEP 1
+WEEK 3+
+Harvard Future Proof — D³ Path
+0/2
+▶
+TRACK D
+Vibe Coding + Builds
+Week 9+ · Base44 and Bolt are your tools
+0/8
+D · STEP 1
+WEEK 9+
+Vibe Coding — Build Anything
+0/6
+▶
+D · STEP 2
+WEEK 9+
+HTML → Native iPhone Apps
+0/2
+▶
+TRACK E
+North Star — OpenClaw
+Ongoing · Requires terminal comfort first
+0/2
+E · STEP 1
+DESTINATION
+OpenClaw — Personal AI Assistant
+0/2
+▶
+METS COLORS · BUILT DIFFERENT · GO GET IT, DANIEL 🔵🟠
